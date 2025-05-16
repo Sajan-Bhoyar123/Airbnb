@@ -1,0 +1,45 @@
+<% layout("/layouts/biolerplate")%>
+<body>
+    
+ <div class="row">
+    <div class="col-6  offset-3">
+        <h3>Add your Property</h3>
+       <form method="post" action="/listing"  novalidate  class="needs-validation" enctype="multipart/form-data">
+           <div class="div mb-3">
+              <label for="title" class="form-label">title</label>
+               <input name="title" id="title" type="text" placeholder="Enter a title of Your propery" class="form-control" required>
+               <div class="invalid-feedback">Title should be valid </div>
+          </div>
+          <div class="mb-3">
+             <label for="description" class="form-label">description</label>
+             <textarea rows="7" cols="30" name="description" id="description" placeholder="Enter a Description" class="form-control" required></textarea>
+             <div class="invalid-feedback">discription should be small </div>
+          </div>
+          <div class="mb-3">
+              <label for="image" class="form-label">Upload Image</label>
+              <input name="image" type="file"  class="form-control" id="image" required>
+              <div class="invalid-feedback">image should be valid </div>
+          </div>
+          <div class="mb-3">
+              <label for="price" class="form-label">Price</label>
+              <input name="price" type="number" placeholder="enter property price" class="form-control" id="price" required>
+              <div class="invalid-feedback">price should be valid </div>
+          </div>
+          <div class="mb-3">
+              <label for="location" class="form-label">Location</label>
+              <input name="location" type="text" placeholder=" enter property location" class="form-control" id="location" required>
+              <div class="invalid-feedback">location should be valid </div>
+          </div>
+          <div class="mb-3">
+              <label for="country" class="formlabel">Country</label>
+              <input name="country" type="text" placeholder="Enter a Country" class="form-control" id="country" required>
+              <div class="invalid-feedback">country should be valid </div>
+          </div>
+          <div class="mb-3">
+            <button class="btnn">Add</button>
+          </div>
+      </form>
+   </div>
+</div>
+</body>
+

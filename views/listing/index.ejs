@@ -1,0 +1,116 @@
+ <% layout("/layouts/biolerplate") %>
+    <style>
+        .filters{
+          display: flex;
+          flex-wrap: wrap;
+          margin-left: 3rem;
+        }
+        .filter{
+           margin-right: 2rem;
+           text-align: center;
+           opacity: 0.7;
+        }
+        .filter:hover{
+          text-decoration: underline;
+          opacity: 1;
+        }
+        .switch{
+             border-radius: 20px;
+            border: 1.5px solid #000;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           padding: 10px;
+           height: 45px;
+           margin-top: 5px;
+        }
+        .gst{
+            display: none;
+        }
+    </style>
+<body>
+     <div class="filters">
+          <div class="filter">
+              <div><i class="fa-solid fa-fire"></i></div>
+              <p>Trending</p>
+          </div>
+          <div class="filter">
+              <div><i class="fa-solid fa-bed"></i></div>
+              <p>Rooms</p>
+          </div>
+          <div class="filter">
+              <div><i class="fa-solid fa-mountain-city"></i></div>
+              <p>Mountain City</p>
+          </div>
+          <div class="filter">
+              <div><i class="fa-solid fa-mountain"></i></div>
+              <p>Mountains</p>
+          </div>
+          <div class="filter">
+              <div><i class="fa-solid fa-chess-rook"></i></div>
+              <p>Castles</p>
+          </div>
+          <div class="filter">
+              <div><i class="fa-solid fa-person-swimming"></i></div>
+              <p>Amazing Pools</p>
+          </div>
+          <div class="filter">
+              <div><i class="fa-solid fa-snowflake"></i></div>
+              <p>Arctic</p>
+          </div>
+          <div class="filter">
+              <div><i class="fa-solid fa-campground"></i></div>
+              <p>Champing</p>
+          </div>
+          <div class="filter">
+              <div><i class="fa-solid fa-cow"></i></div>
+              <p>Farms</p>
+          </div>
+          <!--<div class="filter">
+              <div><i class="fa-solid fa-crown"></i></div>
+              <p>Propety King</p>
+          </div>-->
+          <div class="filter">
+              <div><i class="fa-solid fa-umbrella-beach"></i></div>
+              <p>Beach</p>
+          </div>
+          <div class="switch">
+             <div class="form-check form-switch form-check-reverse">
+                  <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+                 <label class="form-check-label" for="switchCheckDefault">Default switch checkbox input</label>
+             </div>
+          </div>
+     </div>    
+    <div class="front-page-img">
+      <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+        <%for(let list of data){%>
+            <div class="card col" style="width: 18rem;">
+                <img src="<%=list.image.url%>" class="card-img-top" alt="...">
+                 <div class="card-body">
+                    <a href="/listing/<%=list._id%>"><%=list.title%></a>
+                    <p><%=list.location%></p>
+                    <p>₹ <%=list.price.toLocaleString("en-IN")%>/night  &nbsp;<b + &nbsp;  class="gst">+<i>18%</i>GST</b>  </p>
+                    <a href="/listing/<%=list._id%>" class="btn btn-primary">Show Details</a>
+                 </div>
+                 <hr>
+            </div>              
+       <%}%>
+      </div>
+    </div>
+      
+</body>
+<script>
+     const toggle = document.querySelector("#switchCheckDefault");
+     const gsts = document.querySelectorAll(".gst");
+     toggle.addEventListener("click",()=>{
+        /*  if(gst.style.display== "none"){
+          }*/
+         for( gst of gsts){
+             if(gst.style.display != "inline"){
+                   gst.style.display = "inline";
+             }else{
+                 gst.style.display = "none"
+             }
+         }
+     })
+</script>

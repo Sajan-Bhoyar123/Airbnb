@@ -1,0 +1,48 @@
+<% layout("/layouts/biolerplate")%>
+<body> 
+     
+         <div class="row">
+             <div class="col-6 offset-3 ">
+               <h3>Update Your Property</h3>
+               <form method="post" action="/listing/<%=data._id%>?_method=PATCH" class="needs-validation" novalidate enctype="multipart/form-data">
+                   <div class="mb-3">
+                         <label for="title" class="form-label">Title</label>
+                         <input id="title" name="title" type="text" placeholder="<%=data.title%>" class="form-control" required>
+                         <div class="invalid-feedback">Title should be valid </div>
+                   </div>
+                    <div class="mb-3"> 
+                        <label for="description" class="form-label">Description</label>
+                         <textarea id="description" rows="7" cols="30" name="description" class="form-control" required><%=data.description%> </textarea>
+                         <div class="invalid-feedback">Discription must be small </div>
+                   </div>
+                    <div class="mb-3">
+                        <img src="<%=originalImageurl%>" alt="">
+                   </div>
+                   <div class="mb-3">
+                        <label for="image" class="form-label">Image url</label>
+                         <input id="image" name="image" type="file" placeholder="Enter url Of new image" class="form-control" >
+                        
+                   </div>
+                   <div class="mb-3"> 
+                     <label for="price" class="form-label">Price</label>
+                     <input id="price" name="price" type="text" placeholder="<%=data.price%>" class="form-control" required>
+                     <div class="invalid-feedback">Price should be valid </div>
+                   </div>
+                   <div class="mb-3">
+                        <label for="location" class="form-label">location</label>
+                        <input id="location" name="location" type="text" placeholder="<%=data.location%>" class="form-control" required>
+                        <div class="invalid-feedback">Location should be valid </div>
+                   </div>
+                   <div class="mb-3">
+                        <label for="country" class="form-label">country</label>
+                        <input id="country" name="country" type="text" placeholder="<%=data.country%>" class="form-control" required>
+                        <div class="invalid-feedback">Country should be valid </div>
+                   </div> 
+                   <div class="mb-3">           
+                       <button class="btnn" >Update</button>
+                   </div> 
+             </form>
+        </div>
+     </div>
+     
+</body>

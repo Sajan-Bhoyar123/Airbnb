@@ -1,0 +1,75 @@
+<style>
+   .btn-danger i {
+         display: inline;
+         margin-right: 10px;
+   }
+   .btn-danger{
+      border-radius: 20px;
+   }
+   #search{
+       border-radius: 20px;
+       padding: 0px 3rem;
+   }
+</style>
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/listing"><i class="fa-solid fa-compass"></i></a>
+      <p style="margin-top: 15px; margin-right: 20px; color: rgb(136, 14, 14); font-size:20px; font-weight: 700; ">Airbnb</p>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item ">
+            <button class="btn btn-light btn-sm" style="margin-right: 15px;"> <a class="nav-link" href="/listing">ALL property</a></button>
+          </li>
+          <li class="nav-item">
+          <button class="btn btn-light btn-sm">  <a class="nav-link" href="/listing/new">Add Property</a></button>
+          </li>
+        </ul>
+            <div class="nav-item  ">
+                <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search Destination" id="search" aria-label="Search">
+                <button class="btn btn-danger" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+               </form>
+            </div>
+           <ul class="navbar-nav ms-auto">
+        <% if(typeof curruser === 'undefined') { %>
+          <!-- Handle the case when curruser is undefined -->
+          <li class="nav-item">
+            <button class="btn btn-light btn-sm" style="margin-right: 15px;"> 
+              <a class="nav-link active" aria-current="page" href="/login">Log In</a>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-light btn-sm">
+              <a class="nav-link" href="/signup">Sign Up</a>
+            </button>
+          </li>
+        <% } else if(!curruser) { %>
+          <!-- User is not logged in -->
+          <li class="nav-item">
+            <button class="btn btn-light btn-sm" style="margin-right: 15px;"> 
+              <a class="nav-link active" aria-current="page" href="/login">Log In</a>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-light btn-sm">
+              <a class="nav-link" href="/signup">Sign Up</a>
+            </button>
+          </li>
+        <% } else { %>
+          <!-- User is logged in -->
+          <li class="nav-item">
+            <a class="nav-link" href="#">Welcome, <%= curruser.username %></a>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-light btn-sm">
+              <a class="nav-link" href="/logout">Logout</a>
+            </button>
+          </li>
+        <% } %>
+      </ul>
+      </div>
+    </div>
+  </nav>

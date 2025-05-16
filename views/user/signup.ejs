@@ -1,0 +1,29 @@
+<% layout("/layouts/biolerplate")%>
+<body>
+     <h3 class="col-2 offset-4" >Sign Up</h3>
+    <div class="row">
+        <div class="col col-4 offset-3">
+            <form method="post" action="/signup" class="needs-validation" novalidate>
+                  <div class="mb-3">
+                         <label for="username" class="form-label">username</label>
+                         <input id="username" name="username" type="text" placeholder="Enter username" class="form-control" required>
+                         <div class="invalid-feedback">username should be valid </div>
+                   </div>
+                    <div class="mb-3"> 
+                        <label for="Email" class="form-label">Email</label>
+                         <input id="Email"  name="email" class="form-control" type="email" placeholder="Enter email" required> </input>
+                         <div class="invalid-feedback">email should be valid</div>
+                   </div>
+                   <div class="mb-3">
+                        <label for="password" class="form-label">password</label>
+                         <input type="password" id="password" name="password" type="text" placeholder="Enter  password" class="form-control" required>
+                         <div class="invalid-feedback">password should be valid </div>
+                   </div>
+                   
+                   <div class="mb-3">           
+                       <button class="btn btn-success" >Submit</button>
+                   </div> 
+            </form>
+        </div>
+    </div>
+</body>

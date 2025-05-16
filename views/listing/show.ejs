@@ -1,0 +1,95 @@
+
+<% layout("/layouts/biolerplate")%>
+<script>
+      const mapToken= "<%=process.env.MAP_TOKEN%>";
+      const data = <%- JSON.stringify(data) %>;
+</script>
+<body>
+   <div class="row">
+       <div class="col-8 offset-3">
+            <h3 style="margin-left: 25px;">Property Details</h3>
+            <div class="card col-8 show-card">
+               <img src="<%=data.image.url%>" class="card-img-top  show-image" alt="listing _image">
+               <div class="card-body">
+                 <p class="card-text"><b><%=data.title%></b></p>
+                 <ul>
+                      <li>owner = <%=data.owner.username%></li>
+                     <li><%=data.description%></li>
+                     <li>₹<%= data.price ? data.price.toLocaleString("en-IN") : 'N/A' %></li>
+                     <li><%=data.location%></li>
+                     <li><%=data.country%></li>
+                 </ul>
+               </div>
+               <%if(curruser&& curruser._id.equals(data.owner._id)){%>
+                    <div class="box">
+                       <form method="get" action="/listing/<%=data._id%>/edit">
+                           <button class="editbtn">Edit</button>
+                       </form>
+                       <form method="post" action="/listing/<%=data._id%>?_method=DELETE">
+                            <button class="delbtn" style="background: red;color: white;">Delete</button>
+                       </form>
+                  </div>
+               <% }%>
+              
+            </div>
+
+            <hr>
+
+             <%if(curruser){%>
+               <div class="col-8">
+                    <h3><b>Leave A Review</b></h3>
+                 <form method="post" action="/listing/<%=data._id%>/review" class="needs-validation" novalidate>
+                   <div class="mb-3">
+                       <label for="rating" class="form-label"> Rating</label> 
+                        <fieldset class="starability-slot"> 
+                             <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="1" checked aria-label="No rating." />
+                             <input type="radio" id="first-rate1" name="rating" value="1" />
+                             <label for="first-rate1" title="Terrible">1 star</label>
+                             <input type="radio" id="first-rate2" name="rating" value="2" />
+                             <label for="first-rate2" title="Not good">2 stars</label>
+                             <input type="radio" id="first-rate3" name="rating" value="3" />
+                             <label for="first-rate3" title="Average">3 stars</label>
+                             <input type="radio" id="first-rate4" name="rating" value="4" />
+                             <label for="first-rate4" title="Very good">4 stars</label>
+                             <input type="radio" id="first-rate5" name="rating" value="5" />
+                             <label for="first-rate5" title="Amazing">5 stars</label>
+                        </fieldset>
+                    </div>  
+                    <div class="mb-3">
+                        <label for="comment" class="form-label">Message</label>
+                        <textarea name="comment" id="comment" placeholder="enter your comment" class="form-control" required></textarea>
+                        <div class="invalid-feedback">enter a comment</div>
+                    </div>
+                    <div class="mb-3">
+                         <button class="btn btn-success">Submit</button>
+                    </div>
+                 </form>
+            </div>
+               <hr>
+            <%}%>
+
+           <% if(data.reviews.length >0 ){%>
+            <div class="row ">
+                <h3><b>All Reviews</b></h3>
+             <%for(let review of data.reviews){%>
+                <div class="card col-5 ms-3 mb-3">
+                    <div class="card-body">
+                         <h5 class="card-title">@<%=review.author.username%></h5>
+                         <p class="starability-result card-text" data-rating="<%=review.rating%>"></p>
+                         <p class="card-text"><%=review.comment%></p>
+                         <form method="post" action="/listing/<%=data._id%>/review/<%=review._id%>?_method=DELETE">
+                             <button class="btn btn-sm btn-dark">Delete</button>
+                         </form>
+                    </div> 
+                </div>
+             <%}%>
+            </div>
+           <%}%>
+       </div>
+       <div class="col-8 offset-3">
+            <h3>Where You'll be</h3>
+            <div id="map"></div>
+       </div>
+   </div>
+    <script src="/js/map.js"></script>
+</body>

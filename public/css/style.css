@@ -1,0 +1,111 @@
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  .container{
+    flex: 1;
+  }
+  a {
+      text-decoration: none;
+      color: black;
+      font-size: 17px;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+ 
+   a button{
+     background-color: rgb(42, 165, 116);
+    color:white;
+      padding: 5px 10px;
+      border-radius: 20px;
+    
+  }
+  .editbtn{
+     background-color: green;
+     margin-right: 15px;
+     color: white;
+  }
+  button:hover{
+     transform: scale(1.04);
+  }
+  h1, button{
+    margin-left: 0px;
+  }
+  
+  
+  .box button{
+   padding: 5px 20px;
+   border-radius: 5px;
+   margin-top: 10px;
+  }
+  .box{
+      display: flex;
+  }
+  h3{
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   margin-top: 5px;
+   margin-bottom: 20px;
+  }
+  .navbar{
+    height: 5rem;
+    background-color: white;
+    margin-bottom: 10px;
+  }
+  .navbar-brand{
+    color: rgb(141, 21, 21);
+    font-size: 25px;
+  }
+  .main{
+    text-align: center;
+    background-color: rgb(251, 237, 221);
+  }
+  .first i{
+    margin: 5px;
+    font-size: 20px;
+  }
+  .second a{
+    text-decoration: none;
+    color:black;
+    margin: 4px;
+  }
+  .second a:hover{
+    text-decoration: underline;
+  }
+ .front-page-img .card{
+    border-radius: 20px;
+    border: none;
+    margin:  10px 21px;
+   
+  
+  }
+  .card-img-top{
+    width: 100%;
+    height: 60%;
+    border-radius: 20px;
+    object-fit: cover;
+   
+  }
+  .front-page-img .card:hover{
+    transform: scale(1.03);
+  }
+  .btnn{
+    background-color: #fe424d;
+    padding: 0px 20px;
+    border-radius: 10px;
+    color: white;
+  }
+  .show-image{
+    height: 30vh;
+  }
+  .show-card{
+    border: none;
+  }
+  .show-card .box{
+    margin-bottom: 10px;
+    margin-left: 30px;
+  }
+  /*Map*/
+  #map{
+    height: 400px;
+    width: 80vh;
+  }
