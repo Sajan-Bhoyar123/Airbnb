@@ -77,9 +77,11 @@
                          <h5 class="card-title">@<%=review.author.username%></h5>
                          <p class="starability-result card-text" data-rating="<%=review.rating%>"></p>
                          <p class="card-text"><%=review.comment%></p>
+                         <%if(curruser){%>
                          <form method="post" action="/listing/<%=data._id%>/review/<%=review._id%>?_method=DELETE">
                              <button class="btn btn-sm btn-dark">Delete</button>
                          </form>
+                        <%}%>
                     </div> 
                 </div>
              <%}%>
