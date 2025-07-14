@@ -11,6 +11,7 @@
         margin-right: 2rem;
         text-align: center;
         opacity: 0.7;
+        white-space: nowrap;
     }
 
     .filter:hover {
@@ -32,6 +33,7 @@
         padding: 10px 15px;
         height: auto;
         margin-right: 2rem;
+        white-space: nowrap; /* prevent wrapping */
     }
 
     .switch label {
@@ -88,28 +90,28 @@
             <a href="/listing/icon/Beach">Beach</a>
         </div>
 
-        <!-- ✅ Switch inline -->
+        <!-- ✅ GST Toggle Inline -->
         <div class="filter switch">
             <div class="form-check form-switch form-check-reverse">
                 <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
-                <label class="form-check-label" for="switchCheckDefault">GST</label>
+                <label class="form-check-label" for="switchCheckDefault">Show Total Price Including GST</label>
             </div>
         </div>
     </div>
 
     <div class="front-page-img">
         <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
-            <% for(let list of data) { %>
+            <% for (let list of data) { %>
                 <div class="card col" style="width: 18rem;">
-                    <img src="<%=list.image.url%>" class="card-img-top" alt="...">
+                    <img src="<%= list.image.url %>" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <a href="/listing/<%=list._id%>"><%=list.title%></a>
-                        <p><%=list.location%></p>
+                        <a href="/listing/<%= list._id %>"><%= list.title %></a>
+                        <p><%= list.location %></p>
                         <p>
-                            ₹ <%=list.price.toLocaleString("en-IN")%>/night  
-                            &nbsp;<b class="gst">+<i>18%</i>GST</b>
+                            ₹ <%= list.price.toLocaleString("en-IN") %>/night
+                            &nbsp;<b class="gst">+<i>18%</i> GST</b>
                         </p>
-                        <a href="/listing/<%=list._id%>" class="btn btn-primary">Show Details</a>
+                        <a href="/listing/<%= list._id %>" class="btn btn-primary">Show Details</a>
                     </div>
                     <hr>
                 </div>
