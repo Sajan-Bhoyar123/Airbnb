@@ -124,8 +124,14 @@ app.get("/listing/icon/:icon",async(req,res)=>{
       let {icon} = req.params;
       console.log(icon)
       const data =await Listing.find({feature:icon});
-      console.log(data);
-      res.render("listing/index.ejs",{data});
+    /*  console.log(data);
+      res.render("listing/index.ejs",{data});*/
+    if(data.length<1){
+      req.flash("error","NOT Any Property Has This Feature");
+      res.redirect("/listing")
+    }else{
+           res.render("listing/index.ejs",{data})
+    }
 })
 
 app.use((err,req,res,next)=>{
