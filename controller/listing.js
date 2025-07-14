@@ -23,7 +23,7 @@ const showRoute = async(req,res)=>{
      }     
 } 
 const insertRoute = async(req,res)=>{
-       let {title ,description,image,price,location,country} = req.body;
+       let {title ,description,image,feature,price,location,country} = req.body;
         let response =   await geocodingClient.forwardGeocode({
                query: location ,
                limit: 1,
@@ -34,7 +34,7 @@ const insertRoute = async(req,res)=>{
           const url = req.file.path;
          const filename = req.file.filename;
          
-           const newlist = new Listing({title:title,description:description,price:price,location:location,country:country});
+           const newlist = new Listing({title:title,description:description,feature:feature,price:price,location:location,country:country});
            newlist.image = {url,filename};
            newlist.owner = req.user._id;
             newlist.geometry = response.body.features[0].geometry;
@@ -63,7 +63,7 @@ const updateRoute=async (req, res, next) => {
              throw new ExpressError(400,"enter correct data");
            }
          const { id } = req.params;
-         const { title, description, image, price, location, country } = req.body;
+         const { title, description, image,feature, price, location, country } = req.body;
           let response =   await geocodingClient.forwardGeocode({
                query: location ,
                limit: 1,
@@ -72,7 +72,7 @@ const updateRoute=async (req, res, next) => {
            ;
          const updatedData = await Listing.findByIdAndUpdate(
            id,
-           { title, description, image, price, location, country },
+           { title, description, image,feature, price, location, country },
            { new: true, runValidators: true }
           );
         if(typeof req.file !== "undefined" ){

@@ -99,6 +99,17 @@ app.get("/",(req,res)=>{
    req.flash("error","this page Not Found");   
    res.redirect("./listing")
 })
+app.get("/listing/search",async(req,res)=>{
+    let {Title} = req.query;
+    const data = await Listing.find({title:Title});
+    if(data.length<1){
+      req.flash("error","Property NOT Found");
+      res.redirect("/listing")
+    }else{
+           res.render("listing/index.ejs",{data})
+    }
+  
+})
  // require listing route
 const listingRoute = require("./route/listing.js");
 app.use("/listing",listingRoute);
@@ -108,6 +119,14 @@ app.use("/listing/:id/review",reviewRoute);
   // require user route
 const userRoute=  require("./route/user.js");
 app.use("/",userRoute);
+  //icon Route
+app.get("/listing/icon/:icon",async(req,res)=>{
+      let {icon} = req.params;
+      console.log(icon)
+      const data =await Listing.find({feature:icon});
+      console.log(data);
+      res.render("listing/index.ejs",{data});
+})
 
 app.use((err,req,res,next)=>{
   console.log(err);

@@ -15,6 +15,10 @@ const listschema = new mongoose.Schema({
           url:String,
           filename:String
      },
+     feature:{
+           type:String,
+           require:true
+     },
      price:{
           type:Number,
      },

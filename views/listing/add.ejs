@@ -21,6 +21,23 @@
               <div class="invalid-feedback">image should be valid </div>
           </div>
           <div class="mb-3">
+            <label for="feature" class="form-label">Feature</label>
+            <select name="feature" id="feature" class="form-select" required>
+               <option value="" selected disabled>Select a Feature</option>
+               <option value="Trending">Trending</option>
+               <option value="Mountain City">Mountain City</option>
+               <option value="Mountains">Mountains</option>
+               <option value="Arctic">Arctic</option>
+               <option value="Farms">Farms</option>
+               <option value="Beach">Beach</option>
+               <option value="Rooms">Rooms</option>
+               <option value="Castles">Castles</option>
+               <option value="Amazing Pools">Amazing Pools</option>
+               <option value="Champing">Champing</option>
+          </select>
+          <div class="invalid-feedback">Please select a valid feature</div>
+        </div>
+          <div class="mb-3">
               <label for="price" class="form-label">Price</label>
               <input name="price" type="number" placeholder="enter property price" class="form-control" id="price" required>
               <div class="invalid-feedback">price should be valid </div>
