@@ -1,134 +1,106 @@
-body{
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  .container{
-    flex: 1;
-  }
-  a {
-      text-decoration: none;
-      color: black;
-      font-size: 17px;
-      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  }
- 
-   a button{
-     background-color: rgb(42, 165, 116);
-    color:white;
-      padding: 5px 10px;
-      border-radius: 20px;
-    
-  }
-  .editbtn{
-     background-color: green;
-     margin-right: 15px;
-     color: white;
-  }
-  button:hover{
-     transform: scale(1.04);
-  }
-  h1, button{
-    margin-left: 0px;
-  }
-  
-  
-  .box button{
-   padding: 5px 20px;
-   border-radius: 5px;
-   margin-top: 10px;
-  }
-  .box{
-      display: flex;
-  }
-  h3{
-   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-   margin-top: 5px;
-   margin-bottom: 20px;
-  }
-  .navbar{
-    height: 5rem;
-    background-color: white;
-    margin-bottom: 10px;
-  }
-  .navbar-brand{
-    color: rgb(141, 21, 21);
-    font-size: 25px;
-  }
-  .main{
-    text-align: center;
-    background-color: rgb(251, 237, 221);
-  }
-  .first i{
-    margin: 5px;
-    font-size: 20px;
-  }
-  .second a{
-    text-decoration: none;
-    color:black;
-    margin: 4px;
-  }
-  .second a:hover{
-    text-decoration: underline;
-  }
- .front-page-img .card{
-    border-radius: 20px;
-    border: none;
-    margin:  10px 21px;
-   
-  
-  }
-  .card-img-top{
-    width: 100%;
-    height: 60%;
-    border-radius: 20px;
-    object-fit: cover;
-   
-  }
-  .front-page-img .card:hover{
-    transform: scale(1.03);
-  }
-  .btnn{
-    background-color: #fe424d;
-    padding: 0px 20px;
-    border-radius: 10px;
-    color: white;
-  }
-  .show-image{
-    height: 30vh;
-  }
-  .show-card{
-    border: none;
-  }
-  .show-card .box{
-    margin-bottom: 10px;
-    margin-left: 30px;
-  }
-  /*Map*/
-  #map{
-    height: 400px;
-    width: 80vh;
-  }
+.filters-container {
+  overflow-x: auto;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ddd;
+}
 
-  @media (max-width: 768px) {
-  .front-page-img .card {
-    width: 100% !important;
-    margin: 10px auto;
-  }
+.filters {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1.5rem;
+  padding: 0 1rem;
+  align-items: center;
+}
 
+.filter {
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.filter:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.filter i {
+  display: block;
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+.filter a {
+  text-decoration: none;
+  color: black;
+}
+
+.switch {
+  padding: 0 1rem;
+}
+
+.front-page-img {
+  padding: 1rem;
+}
+
+.front-page-img .row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  background: white;
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 0.8rem 1rem;
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: black;
+  text-decoration: none;
+}
+
+.card-title:hover {
+  text-decoration: underline;
+}
+
+.card-location {
+  font-size: 0.9rem;
+  color: gray;
+  margin-bottom: 5px;
+}
+
+.gst {
+  display: none;
+}
+
+@media (max-width: 768px) {
   .filters {
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-left: 0;
     gap: 1rem;
   }
 
   .filter {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
 
-  .switch {
-    width: 100%;
-    justify-content: center;
+  .card img {
+    height: 180px;
+  }
+
+  .card-body {
+    padding: 0.6rem 0.8rem;
   }
 }

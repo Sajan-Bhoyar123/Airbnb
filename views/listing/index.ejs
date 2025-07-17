@@ -1,117 +1,53 @@
 <% layout("/layouts/biolerplate") %>
-<style>
-    .filters {
-        display: flex;
-        flex-wrap: wrap;
-        margin-left: 3rem;
-        align-items: center;
-        gap: 1rem;
-    }
 
-    .filter {
-        text-align: center;
-        opacity: 0.7;
-        font-size: 0.95rem;
-    }
+<div class="filters-container">
+  <div class="filters">
+    <div class="filter"><i class="fa-solid fa-fire"></i><a href="/listing/icon/Trending">Trending</a></div>
+    <div class="filter"><i class="fa-solid fa-bed"></i><a href="/listing/icon/Rooms">Rooms</a></div>
+    <div class="filter"><i class="fa-solid fa-mountain-city"></i><a href="/listing/icon/Mountain City">Mountain City</a></div>
+    <div class="filter"><i class="fa-solid fa-mountain"></i><a href="/listing/icon/Mountains">Mountains</a></div>
+    <div class="filter"><i class="fa-solid fa-chess-rook"></i><a href="/listing/icon/Castles">Castles</a></div>
+    <div class="filter"><i class="fa-solid fa-person-swimming"></i><a href="/listing/icon/Amazing Pools">Amazing Pools</a></div>
+    <div class="filter"><i class="fa-solid fa-snowflake"></i><a href="/listing/icon/Arctic">Arctic</a></div>
+    <div class="filter"><i class="fa-solid fa-campground"></i><a href="/listing/icon/Champing">Champing</a></div>
+    <div class="filter"><i class="fa-solid fa-cow"></i><a href="/listing/icon/Farms">Farms</a></div>
+    <div class="filter"><i class="fa-solid fa-umbrella-beach"></i><a href="/listing/icon/Beach">Beach</a></div>
 
-    .filter:hover {
-        text-decoration: underline;
-        opacity: 1;
-    }
-
-    .filter a {
-        text-decoration: none;
-        color: black;
-    }
-
-    .switch {
-        border-radius: 20px;
-        border: 1.5px solid #000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 10px 15px;
-        height: auto;
-    }
-
-    .switch label {
-        font-size: 0.9rem;
-        margin-left: 8px;
-        cursor: pointer;
-    }
-
-    .gst {
-        display: none;
-    }
-
-    @media (max-width: 768px) {
-        .filters {
-            margin-left: 0;
-            justify-content: center;
-            gap: 0.8rem;
-        }
-
-        .filter {
-            font-size: 0.8rem;
-        }
-
-        .front-page-img .card {
-            width: 100% !important;
-            margin: 10px auto;
-        }
-    }
-</style>
-
-<body>
-    <div class="filters">
-        <div class="filter"><div><i class="fa-solid fa-fire"></i></div><a href="/listing/icon/Trending">Trending</a></div>
-        <div class="filter"><div><i class="fa-solid fa-bed"></i></div><a href="/listing/icon/Rooms">Rooms</a></div>
-        <div class="filter"><div><i class="fa-solid fa-mountain-city"></i></div><a href="/listing/icon/Mountain City">Mountain City</a></div>
-        <div class="filter"><div><i class="fa-solid fa-mountain"></i></div><a href="/listing/icon/Mountains">Mountains</a></div>
-        <div class="filter"><div><i class="fa-solid fa-chess-rook"></i></div><a href="/listing/icon/Castles">Castles</a></div>
-        <div class="filter"><div><i class="fa-solid fa-person-swimming"></i></div><a href="/listing/icon/Amazing Pools">Amazing Pools</a></div>
-        <div class="filter"><div><i class="fa-solid fa-snowflake"></i></div><a href="/listing/icon/Arctic">Arctic</a></div>
-        <div class="filter"><div><i class="fa-solid fa-campground"></i></div><a href="/listing/icon/Champing">Champing</a></div>
-        <div class="filter"><div><i class="fa-solid fa-cow"></i></div><a href="/listing/icon/Farms">Farms</a></div>
-        <div class="filter"><div><i class="fa-solid fa-umbrella-beach"></i></div><a href="/listing/icon/Beach">Beach</a></div>
-
-        <!-- ✅ Switch inline -->
-        <div class="filter switch">
-            <div class="form-check form-switch form-check-reverse">
-                <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
-                <label class="form-check-label" for="switchCheckDefault">Include GST</label>
-            </div>
-        </div>
+    <div class="filter switch">
+      <div class="form-check form-switch form-check-reverse">
+        <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+        <label class="form-check-label" for="switchCheckDefault">Include GST</label>
+      </div>
     </div>
+  </div>
+</div>
 
-    <div class="front-page-img">
-        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
-            <% for(let list of data) { %>
-                <div class="card col" style="width: 18rem;">
-                    <img src="<%=list.image.url%>" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <a href="/listing/<%=list._id%>"><%=list.title%></a>
-                        <p><%=list.location%></p>
-                        <p>
-                            ₹ <%=list.price.toLocaleString("en-IN")%>/night  
-                            &nbsp;<b class="gst">+<i>18%</i>GST</b>
-                        </p>
-                        <a href="/listing/<%=list._id%>" class="btn btn-primary">Show Details</a>
-                    </div>
-                    <hr>
-                </div>
-            <% } %>
+<div class="front-page-img">
+  <div class="row">
+    <% for(let list of data) { %>
+      <div class="card">
+        <img src="<%=list.image.url%>" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <a href="/listing/<%=list._id%>" class="card-title"><%=list.title%></a>
+          <p class="card-location"><%=list.location%></p>
+          <p>
+            ₹ <%=list.price.toLocaleString("en-IN")%>/night  
+            <b class="gst"> +<i>18%</i> GST</b>
+          </p>
+          <a href="/listing/<%=list._id%>" class="btn btn-primary">Show Details</a>
         </div>
-    </div>
-</body>
+      </div>
+    <% } %>
+  </div>
+</div>
 
 <script>
-    const toggle = document.querySelector("#switchCheckDefault");
-    const gsts = document.querySelectorAll(".gst");
+  const toggle = document.querySelector("#switchCheckDefault");
+  const gsts = document.querySelectorAll(".gst");
 
-    toggle.addEventListener("click", () => {
-        gsts.forEach(gst => {
-            gst.style.display = gst.style.display !== "inline" ? "inline" : "none";
-        });
+  toggle.addEventListener("click", () => {
+    gsts.forEach(gst => {
+      gst.style.display = gst.style.display !== "inline" ? "inline" : "none";
     });
+  });
 </script>
