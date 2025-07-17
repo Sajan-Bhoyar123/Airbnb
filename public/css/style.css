@@ -188,3 +188,19 @@ form input {
   height: 100vh;
   background-color: #f8f9fa;
 }
+/* Adjust card layout spacing */
+.listing-card-main {
+  margin-top: 20px !important;
+  height: 500px !important;
+  padding: 5px;
+  border: none !important;
+}
+
+/* Responsive layout overrides */
+@media (min-width: 992px) {
+  .listing-card-main {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
