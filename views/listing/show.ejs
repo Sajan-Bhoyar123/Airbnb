@@ -21,7 +21,7 @@
                     <li><%=data.country%></li>
                 </ul>
             </div>
-            <% if(currUser && currUser._id.equals(data.owner._id)){ %>
+            <% if(curruser && curruser._id.equals(data.owner._id)){ %>
             <div class="buttons">
                 <form method="GET" action="/listing/<%=data._id%>/edit">
                     <button class="btn btn-warning mb-3">Edit</button>
@@ -33,7 +33,7 @@
             <% } %>
         </div>
 
-        <% if(currUser){ %>
+        <% if(curruser){ %>
         <div class="review-form mt-4" style="max-width: 50%; margin: auto;" >
             <h3><b>Leave A Review</b></h3>
             <form method="POST" action="/listing/<%=data._id%>/review" class="needs-validation" novalidate>
@@ -73,7 +73,7 @@
                         <h5 class="card-title"><strong>@</strong><%=review.author.username%></h5>
                         <p class="starability-result card-text" data-rating="<%=review.rating%>"></p>
                         <p class="card-text"><%=review.comment%></p>
-                        <% if(currUser){ %>
+                        <% if(curruser){ %>
                         <form method="POST" action="/listing/<%=data._id%>/review/<%=review._id%>?_method=DELETE">
                             <button type="submit" class="btn btn-dark">Delete</button>
                         </form>
