@@ -5,12 +5,13 @@
         flex-wrap: wrap;
         margin-left: 3rem;
         align-items: center;
+        gap: 1rem;
     }
 
     .filter {
-        margin-right: 2rem;
         text-align: center;
         opacity: 0.7;
+        font-size: 0.95rem;
     }
 
     .filter:hover {
@@ -31,7 +32,6 @@
         justify-content: center;
         padding: 10px 15px;
         height: auto;
-        margin-right: 2rem;
     }
 
     .switch label {
@@ -43,50 +43,37 @@
     .gst {
         display: none;
     }
+
+    @media (max-width: 768px) {
+        .filters {
+            margin-left: 0;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+
+        .filter {
+            font-size: 0.8rem;
+        }
+
+        .front-page-img .card {
+            width: 100% !important;
+            margin: 10px auto;
+        }
+    }
 </style>
 
 <body>
     <div class="filters">
-        <div class="filter">
-            <div><i class="fa-solid fa-fire"></i></div>
-            <a href="/listing/icon/Trending">Trending</a>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-bed"></i></div>
-            <a href="/listing/icon/Rooms">Rooms</a>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-mountain-city"></i></div>
-            <a href="/listing/icon/Mountain City">Mountain City</a>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-mountain"></i></div>
-            <a href="/listing/icon/Mountains">Mountains</a>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-chess-rook"></i></div>
-            <a href="/listing/icon/Castles">Castles</a>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-person-swimming"></i></div>
-            <a href="/listing/icon/Amazing Pools">Amazing Pools</a>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-snowflake"></i></div>
-            <a href="/listing/icon/Arctic">Arctic</a>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-campground"></i></div>
-            <a href="/listing/icon/Champing">Champing</a>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-cow"></i></div>
-            <a href="/listing/icon/Farms">Farms</a>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-umbrella-beach"></i></div>
-            <a href="/listing/icon/Beach">Beach</a>
-        </div>
+        <div class="filter"><div><i class="fa-solid fa-fire"></i></div><a href="/listing/icon/Trending">Trending</a></div>
+        <div class="filter"><div><i class="fa-solid fa-bed"></i></div><a href="/listing/icon/Rooms">Rooms</a></div>
+        <div class="filter"><div><i class="fa-solid fa-mountain-city"></i></div><a href="/listing/icon/Mountain City">Mountain City</a></div>
+        <div class="filter"><div><i class="fa-solid fa-mountain"></i></div><a href="/listing/icon/Mountains">Mountains</a></div>
+        <div class="filter"><div><i class="fa-solid fa-chess-rook"></i></div><a href="/listing/icon/Castles">Castles</a></div>
+        <div class="filter"><div><i class="fa-solid fa-person-swimming"></i></div><a href="/listing/icon/Amazing Pools">Amazing Pools</a></div>
+        <div class="filter"><div><i class="fa-solid fa-snowflake"></i></div><a href="/listing/icon/Arctic">Arctic</a></div>
+        <div class="filter"><div><i class="fa-solid fa-campground"></i></div><a href="/listing/icon/Champing">Champing</a></div>
+        <div class="filter"><div><i class="fa-solid fa-cow"></i></div><a href="/listing/icon/Farms">Farms</a></div>
+        <div class="filter"><div><i class="fa-solid fa-umbrella-beach"></i></div><a href="/listing/icon/Beach">Beach</a></div>
 
         <!-- ✅ Switch inline -->
         <div class="filter switch">
