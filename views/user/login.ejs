@@ -1,24 +1,28 @@
-<% layout("/layouts/biolerplate")%>
-<body>
-     <h1 class="col-4 offset-4" >Login Page</h1>
-    <div class="row">
-        <div class="col col-4 offset-3">
-            <form method="post" action="/login" class="needs-validation" novalidate>
-                  <div class="mb-3">
-                         <label for="username" class="form-label">username</label>
-                         <input id="username" name="username" type="text" placeholder="Enter  username" class="form-control" required>
-                         <div class="invalid-feedback">username should be valid </div>
-                   </div>
-                   <div class="mb-3">
-                        <label for="password" class="form-label">password</label>
-                         <input type="password" id="password" name="password" type="text" placeholder="Enter password" class="form-control" required>
-                         <div class="invalid-feedback">password should be valid </div>
-                   </div>
-                   
-                   <div class="mb-3">           
-                       <button class="btn btn-success" >Login</button>
-                   </div> 
-            </form>
+<%- layout("/layouts/biolerplate.ejs")%>
+
+<body class="auth-body">
+  <div class="container h-100 d-flex justify-content-center align-items-center">
+    <div class="row w-100">
+      <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto">
+        <div class="text-center mb-4">
+          <h2>Login Page</h2>
         </div>
+        <form method="POST" action="/login" class="needs-validation" novalidate>
+          <div class="mb-3">
+            <label for="username" class="form-label text-start w-100 " >Username</label>
+            <input name="username" id="username" type="text" placeholder="Enter your Name" class="form-control" required>
+            <div class="invalid-feedback">Please Enter your Name</div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label text-start w-100">Password</label>
+            <input name="password" id="password" type="password" placeholder="Enter your password" class="form-control" required>
+            <div class="invalid-feedback">Enter a Strong password</div>
+          </div>
+          <div class="d-grid">
+            <button class="btn btn-success">Login</button>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
 </body>
