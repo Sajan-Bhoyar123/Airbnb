@@ -1,65 +1,70 @@
-<% layout("/layouts/biolerplate")%>
-<body> 
-     
-         <div class="row">
-             <div class="col-6 offset-3 ">
-               <h3>Update Your Property</h3>
-               <form method="post" action="/listing/<%=data._id%>?_method=PATCH" class="needs-validation" novalidate enctype="multipart/form-data">
-                   <div class="mb-3">
-                         <label for="title" class="form-label">Title</label>
-                         <input id="title" name="title" type="text" placeholder="<%=data.title%>" class="form-control" required>
-                         <div class="invalid-feedback">Title should be valid </div>
-                   </div>
-                    <div class="mb-3"> 
-                        <label for="description" class="form-label">Description</label>
-                         <textarea id="description" rows="7" cols="30" name="description" class="form-control" required><%=data.description%> </textarea>
-                         <div class="invalid-feedback">Discription must be small </div>
-                   </div>
-                    <div class="mb-3">
-                        <img src="<%=originalImageurl%>" alt="">
-                   </div>
-                   <div class="mb-3">
-                        <label for="image" class="form-label">Image url</label>
-                         <input id="image" name="image" type="file" placeholder="Enter url Of new image" class="form-control" >
-                        
-                   </div>
-                  <div class="mb-3">
-                         <label for="feature" class="form-label">Feature</label>
-                         <select name="feature" id="feature" class="form-select" >
-                              <option value="" selected disabled>Select a Feature</option>
-                              <option value="Trending">Trending</option>
-                              <option value="Mountain City">Mountain City</option>
-                              <option value="Mountains">Mountains</option>
-                              <option value="Arctic">Arctic</option>
-                              <option value="Farms">Farms</option>
-                              <option value="Beach">Beach</option>
-                              <option value="Rooms">Rooms</option>
-                              <option value="Castles">Castles</option>
-                              <option value="Amazing Pools">Amazing Pools</option>
-                              <option value="Champing">Champing</option>
-                         </select>
-                        <div class="invalid-feedback">Please select a valid feature</div>
-                  </div>  
-                   <div class="mb-3"> 
-                     <label for="price" class="form-label">Price</label>
-                     <input id="price" name="price" type="text" placeholder="<%=data.price%>" class="form-control" required>
-                     <div class="invalid-feedback">Price should be valid </div>
-                   </div>
-                   <div class="mb-3">
-                        <label for="location" class="form-label">location</label>
-                        <input id="location" name="location" type="text" placeholder="<%=data.location%>" class="form-control" required>
-                        <div class="invalid-feedback">Location should be valid </div>
-                   </div>
-                   <div class="mb-3">
-                        <label for="country" class="form-label">country</label>
-                        <input id="country" name="country" type="text" placeholder="<%=data.country%>" class="form-control" required>
-                        <div class="invalid-feedback">Country should be valid </div>
-                   </div> 
-                   <div class="mb-3">           
-                       <button class="btnn" >Update</button>
-                   </div> 
-             </form>
+<%- layout("/layouts/biolerplate.ejs")%>
+<body>
+  <div class="headerpage">
+     <h2>Edit Page</h2>
+  </div>
+<div class="row"></div>
+   <div class="col-6 offset-3">
+     <form method="post" action="/listing/<%=data._id%>?_method=PATCH" class="needs-validation" novalidate enctype="multipart/form-data">
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input name="title" id="title" type="text" placeholder="<%=data.title%>" class="form-control" required>
+          <div class="invalid-feedback">Enter Title of Your Property</div>
         </div>
-     </div>
-     
+ 
+        <div class="mb-3">
+           <label for="discription" class="form-label">Description</label>
+           <textarea name="discription" id="discription" placeholder="<%=data.discription%>" class="form-control" required></textarea>
+           <div class="invalid-feedback">Enter Short Description</div>
+        </div> 
+         <div class="mb-3 editpageimage">
+            <p>Original Image</p>
+            <img src="<%=originalImageurl%>" alt="">
+         </div>
+        <div class="md-3">
+          <label for="image" class="form-label">Image</label>
+          <input name="image" id="image" type="file" placeholder="<%=data.image.url%>" class="form-control">
+          <div class="invalid-feedback">Enter image of your Property</div>
+        </div>   
+         <div class="mb-3">
+            <label for="feature" class="form-label">Feature</label>
+            <select name="feature" id="feature" class="form-select" >
+                <option value="" selected disabled>Select a Feature</option>
+                <option value="Trending">Trending</option>
+                <option value="Mountain City">Mountain City</option>
+                <option value="Mountains">Mountains</option>
+                <option value="Arctic">Arctic</option>
+               <option value="Farms">Farms</option>
+               <option value="Beach">Beach</option>
+               <option value="Rooms">Rooms</option>
+                <option value="Castles">Castles</option>
+                <option value="Amazing Pools">Amazing Pools</option>
+               <option value="Champing">Champing</option>
+            </select>
+             <div class="invalid-feedback">Please select a valid feature</div>
+        </div>
+        <div class="mb-3">
+           <label for="price" class="form-label">Price</label>
+           <input name="price" id="price" type="number" placeholder="<%=data.price%>" class="form-control" required>
+           <div class="invalid-feedback">Enter a Price</div>
+        </div>
+        
+        <div class="mb-3">
+           <label for="location" class="form-label">Location</label>
+           <input name="location" id="location" type="text" placeholder="<%=data.location%>" class="form-control" required>
+           <div class="invalid-feedback">Enter a Correct Location</div>
+        </div>
+        
+        <div class="mb-3">
+           <label for="country" class="form-label">Country</label>
+           <input name="country" id="country" type="text" placeholder="<%=data.country%>" class="form-control" required>
+           <div class="invalid-feedback">Enter a Correct Coutry </div>
+        </div>
+        
+        <div class="mb-3">
+          <button class="btn btn-success" type="submit">Submit</button>
+        </div>
+     </form>
+    </div>
+</div>
 </body>

@@ -5,8 +5,8 @@ const mapToken= process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
 const indexRoute = async(req,res)=>{
-      const data = await Listing.find({});
-      res.render("./listing/index.ejs",{data});
+      const datas = await Listing.find({});
+      res.render("./listing/index.ejs",{datas});
 }
 const renderAddpage = (req,res)=>{
     res.render("./listing/add.ejs")

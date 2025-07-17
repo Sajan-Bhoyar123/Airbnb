@@ -1,26 +1,24 @@
-<% layout("/layouts/biolerplate") %>
+<%- layout("/layouts/biolerplate.ejs")%>
+
 <style>
     .filters {
         display: flex;
         flex-wrap: wrap;
-        margin-left: 3rem;
-        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin: 10px auto;
+        margin-right: 35px;
     }
 
     .filter {
-        margin-right: 2rem;
         text-align: center;
         opacity: 0.7;
+        margin: 10px;
     }
 
     .filter:hover {
         text-decoration: underline;
         opacity: 1;
-    }
-
-    .filter a {
-        text-decoration: none;
-        color: black;
     }
 
     .switch {
@@ -29,89 +27,81 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 10px 15px;
-        height: auto;
-        margin-right: 2rem;
-    }
-
-    .switch label {
-        font-size: 0.9rem;
-        margin-left: 8px;
-        cursor: pointer;
+        padding: 10px;
+        height: 45px;
+        margin-top: 5px;
     }
 
     .gst {
         display: none;
     }
+
+    .filter a {
+        text-decoration: none;
+        color: black;
+    }
+
+    @media (max-width: 768px) {
+        .filters {
+            margin-left: 1rem;
+            margin-right: 1rem;
+            gap: 0.5rem;
+        }
+
+        .switch label {
+            font-size: 14px;
+        }
+
+        .listing-card-main {
+            margin-left: 0 !important;
+            width: 100% !important;
+        }
+
+        .row {
+            margin-left: 0 !important;
+            justify-content: center;
+        }
+
+        .filter i {
+            font-size: 20px;
+        }
+
+        .filter a {
+            font-size: 14px;
+        }
+    }
 </style>
 
 <body>
     <div class="filters">
-        <div class="filter">
-            <div><i class="fa-solid fa-fire"></i></div>
-            <a href="/listing/icon/Trending">Trending</a>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-bed"></i></div>
-            <a href="/listing/icon/Rooms">Rooms</a>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-mountain-city"></i></div>
-            <a href="/listing/icon/Mountain City">Mountain City</a>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-mountain"></i></div>
-            <a href="/listing/icon/Mountains">Mountains</a>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-chess-rook"></i></div>
-            <a href="/listing/icon/Castles">Castles</a>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-person-swimming"></i></div>
-            <a href="/listing/icon/Amazing Pools">Amazing Pools</a>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-snowflake"></i></div>
-            <a href="/listing/icon/Arctic">Arctic</a>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-campground"></i></div>
-            <a href="/listing/icon/Champing">Champing</a>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-cow"></i></div>
-            <a href="/listing/icon/Farms">Farms</a>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-umbrella-beach"></i></div>
-            <a href="/listing/icon/Beach">Beach</a>
-        </div>
-
-        <!-- ✅ Switch inline -->
-        <div class="filter switch">
+        <div class="filter"><div><i class="fa-solid fa-fire"></i></div><a href="/listing/icon/Trending">Trending</a></div>
+        <div class="filter"><div><i class="fa-solid fa-bed"></i></div><a href="/listing/icon/Rooms">Rooms</a></div>
+        <div class="filter"><div><i class="fa-solid fa-mountain-city"></i></div><a href="/listing/icon/Mountain City">Mountain City</a></div>
+        <div class="filter"><div><i class="fa-solid fa-mountain"></i></div><a href="/listing/icon/Mountains">Mountains</a></div>
+        <div class="filter"><div><i class="fa-solid fa-chess-rook"></i></div><a href="/listing/icon/Castles">Castles</a></div>
+        <div class="filter"><div><i class="fa-solid fa-person-swimming"></i></div><a href="/listing/icon/Amazing Pools">Amazing Pools</a></div>
+        <div class="filter"><div><i class="fa-solid fa-snowflake"></i></div><a href="/listing/icon/Arctic">Arctic</a></div>
+        <div class="filter"><div><i class="fa-solid fa-campground"></i></div><a href="/listing/icon/Champing">Champing</a></div>
+        <div class="filter"><div><i class="fa-solid fa-cow"></i></div><a href="/listing/icon/Farms">Farms</a></div>
+        <div class="filter"><div><i class="fa-solid fa-umbrella-beach"></i></div><a href="/listing/icon/Beach">Beach</a></div>
+        <div class="switch">
             <div class="form-check form-switch form-check-reverse">
                 <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
-                <label class="form-check-label" for="switchCheckDefault">Include GST</label>
+                <label class="form-check-label" for="switchCheckDefault">Show GST</label>
             </div>
         </div>
     </div>
 
-    <div class="front-page-img">
-        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
-            <% for(let list of data) { %>
-                <div class="card col" style="width: 18rem;">
-                    <img src="<%=list.image.url%>" class="card-img-top" alt="...">
+    <div class="homepage">
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1">
+            <% for(let data of datas){ %>
+                <div class="card listing-card-main" style="width: 18rem; height: 100%;">
+                    <img style="height: 20rem; border-radius: 20px;" src="<%=data.image.url%>" class="card-img-top" alt="listing_image">
                     <div class="card-body">
-                        <a href="/listing/<%=list._id%>"><%=list.title%></a>
-                        <p><%=list.location%></p>
-                        <p>
-                            ₹ <%=list.price.toLocaleString("en-IN")%>/night  
-                            &nbsp;<b class="gst">+<i>18%</i>GST</b>
-                        </p>
-                        <a href="/listing/<%=list._id%>" class="btn btn-primary">Show Details</a>
+                        <h5 class="card-title"><%= data.title %></h5>
+                        <p>₹ <%= data.price.toLocaleString("en-IN") %>/night &nbsp;<b class="gst">+<i>18%</i>GST</b></p>
+                        <a href="/listing/<%=data._id%>"><button class="btn btn-success">Show Details</button></a>
                     </div>
-                    <hr>
                 </div>
             <% } %>
         </div>
@@ -121,10 +111,9 @@
 <script>
     const toggle = document.querySelector("#switchCheckDefault");
     const gsts = document.querySelectorAll(".gst");
-
     toggle.addEventListener("click", () => {
-        gsts.forEach(gst => {
+        for (gst of gsts) {
             gst.style.display = gst.style.display !== "inline" ? "inline" : "none";
-        });
+        }
     });
 </script>

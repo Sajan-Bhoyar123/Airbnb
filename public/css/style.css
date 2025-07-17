@@ -1,113 +1,190 @@
-body{
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  .container{
-    flex: 1;
-  }
-  a {
-      text-decoration: none;
-      color: black;
-      font-size: 17px;
-      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  }
- 
-   a button{
-     background-color: rgb(42, 165, 116);
-    color:white;
-      padding: 5px 10px;
-      border-radius: 20px;
-    
-  }
-  .editbtn{
-     background-color: green;
-     margin-right: 15px;
-     color: white;
-  }
-  button:hover{
-     transform: scale(1.04);
-  }
-  h1, button{
-    margin-left: 0px;
-  }
-  
-  
-  .box button{
-   padding: 5px 20px;
-   border-radius: 5px;
-   margin-top: 10px;
-  }
-  .box{
-      display: flex;
-  }
-  h3{
-   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-   margin-top: 5px;
-   margin-bottom: 20px;
-  }
-  .navbar{
-    height: 5rem;
-    background-color: white;
-    margin-bottom: 10px;
-  }
-  .navbar-brand{
-    color: rgb(141, 21, 21);
-    font-size: 25px;
-  }
-  .main{
-    text-align: center;
-    background-color: rgb(251, 237, 221);
-  }
-  .first i{
-    margin: 5px;
-    font-size: 20px;
-  }
-  .second a{
-    text-decoration: none;
-    color:black;
-    margin: 4px;
-  }
-  .second a:hover{
-    text-decoration: underline;
-  }
- .front-page-img .card{
-    border-radius: 20px;
-    border: none;
-    margin:  10px 21px;
-   
-  
-  }
-  .card-img-top{
-    width: 100%;
-    height: 60%;
-    border-radius: 20px;
-    object-fit: cover;
-   
-  }
-  .front-page-img .card:hover{
-    transform: scale(1.03);
-  }
-  .btnn{
-    background-color: #fe424d;
-    padding: 0px 20px;
-    border-radius: 10px;
-    color: white;
-  }
-  .show-image{
-    height: 30vh;
-  }
-  .show-card{
-    border: none;
-  }
-  .show-card .box{
-    margin-bottom: 10px;
-    margin-left: 30px;
-  }
-  /*Map*/
-  #map{
-    height: 400px;
-    width: 80vh;
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+#container {
+  flex: 1;
+}
+#loginsignin {
+  margin-left: 20%;
+  gap: 1rem;
+  display: flex;
+}
+.d-flex {
+  text-align: right;
+  margin-left: 100px;
+}
+.nav-link button {
+  background-color: white;
+  opacity: 0.7;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.btn:hover {
+  transform: scale(1.04);
+}
+.navbar-brand i {
+  font-size: 23px;
+  color: rgb(133, 15, 15);
+  margin-left: 10px;
+}
+.navbar-brand {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.main {
+  text-align: center;
+  background-color: rgb(251, 237, 221);
+  padding: 1rem 0;
+}
+.first i {
+  margin: 5px;
+  font-size: 20px;
+}
+.second a {
+  text-decoration: none;
+  color: black;
+  margin: 4px;
+}
+.second a:hover {
+  text-decoration: underline;
+}
+.listing-card {
+  margin-top: 20px !important;
+  padding: 5px;
+  border: none !important;
+}
+.listing-card-main {
+  margin-left: 50px;
+  margin-top: 20px !important;
+  height: 500px !important;
+  padding: 5px;
+  border: none !important;
+}
+.row {
+  margin-left: 40px !important;
+}
+.card-img-top {
+  object-fit: cover;
+  border-radius: 20px;
+  width: 100% !important;
+}
+.card-title {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
+}
+.homepage .card:hover {
+  transform: scale(1.03);
+}
+.headerpage {
+  margin-top: 10px;
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-right: 30px;
+}
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 10px;
+}
+form label {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+form input {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.alert {
+  margin-top: 10px !important;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.alert p {
+  margin-bottom: 0;
+}
+.editpageimage img {
+  width: 250px;
+}
+#map {
+  height: 400px;
+  width: 90vw;
+  max-width: 100%;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .filters {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: 0;
+    margin-right: 0;
   }
 
- 
+  .listing-card-main {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90% !important;
+  }
+
+  .row {
+    margin-left: 0 !important;
+    justify-content: center;
+  }
+
+  .filters .filter i {
+    font-size: 18px;
+  }
+
+  .filters .filter a {
+    font-size: 14px;
+  }
+
+  #loginsignin {
+    margin-left: 0;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .d-flex {
+    margin-left: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .main {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .first i {
+    font-size: 18px;
+    margin: 3px;
+  }
+
+  .second a {
+    margin: 0 5px;
+    font-size: 14px;
+  }
+
+  form {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  #search {
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .btn-danger {
+    width: 100%;
+  }
+}
+.auth-body {
+  height: 100vh;
+  background-color: #f8f9fa;
+}
