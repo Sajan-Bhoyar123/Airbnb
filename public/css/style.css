@@ -188,3 +188,42 @@ form input {
   height: 100vh;
   background-color: #f8f9fa;
 }
+.filters-container {
+  overflow-x: auto;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1.5rem;
+  padding: 0 1rem;
+  align-items: center;
+}
+
+.filter {
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.filter:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.filter i {
+  display: block;
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+.filter a {
+  text-decoration: none;
+  color: black;
+}
+
+.switch {
+  padding: 0 1rem;
+}
