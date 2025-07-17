@@ -1,41 +1,33 @@
-<%- layout("/layouts/biolerplate.ejs") %>
-
-<style>
-  .auth-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #f8f9fa;
-  }
-
-  .auth-content {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-</style>
+<%- layout("/layouts/biolerplate.ejs")%>
 
 <body class="auth-body">
-  <div class="auth-content">
-    <h2 class="headerpage">SignUp Page</h2>
-    <form method="POST" action="/signup" style="width: 90%; max-width: 400px;">
-      <div class="form-group">
-        <label>Username</label>
-        <input class="form-control" type="text" placeholder="Enter your Name" name="username" required>
+  <div class="container h-100 d-flex justify-content-center align-items-center">
+    <div class="row w-100">
+      <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto">
+        <div class="text-center mb-4">
+          <h2>SignUp Page</h2>
+        </div>
+        <form method="POST" action="/signup" class="needs-validation" novalidate>
+          <div class="mb-3">
+            <label for="username" class="form-label text-start w-100">Username</label>
+            <input name="username" id="username" type="text" placeholder="Enter your Name" class="form-control" required>
+            <div class="invalid-feedback">Please Enter Your Name</div>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label text-start w-100">Email</label>
+            <input name="email" id="email" type="email" placeholder="Enter your email" class="form-control" required>
+            <div class="invalid-feedback">Enter Your Email</div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label text-start w-100">Password</label>
+            <input name="password" id="password" type="password" placeholder="Enter your password" class="form-control" required>
+            <div class="invalid-feedback">Enter a Strong Password</div>
+          </div>
+          <div class="d-grid">
+            <button class="btn btn-primary">Sign Up</button>
+          </div>
+        </form>
       </div>
-      <div class="form-group">
-        <label>Email</label>
-        <input class="form-control" type="email" placeholder="Enter your email" name="email" required>
-      </div>
-      <div class="form-group">
-        <label>Password</label>
-        <input class="form-control" type="password" placeholder="Enter your password" name="password" required>
-      </div>
-      <button class="btn btn-primary btn-block mt-3">Sign Up</button>
-    </form>
+    </div>
   </div>
-
-  <%- include("../partials/footer") %>
 </body>

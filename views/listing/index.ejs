@@ -93,22 +93,19 @@
     </div>
 
     <div class="homepage">
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4" style="margin-left: 0; justify-content: center;">
-    <% for(let data of datas){ %>
-      <div class="col d-flex justify-content-center">
-        <div class="card listing-card-main" style="width: 18rem;">
-          <img style="height: 20rem; border-radius: 20px;" src="<%=data.image.url%>" class="card-img-top" alt="listing_image">
-          <div class="card-body">
-            <h5 class="card-title"><%= data.title %></h5>
-            <p>₹ <%= data.price.toLocaleString("en-IN") %>/night &nbsp;<b class="gst">+<i>18%</i>GST</b></p>
-            <a href="/listing/<%=data._id%>"><button class="btn btn-success">Show Details</button></a>
-          </div>
+        <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1">
+            <% for(let data of datas){ %>
+                <div class="card listing-card-main" style="width: 18rem; height: 100%;">
+                    <img style="height: 20rem; border-radius: 20px;" src="<%=data.image.url%>" class="card-img-top" alt="listing_image">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= data.title %></h5>
+                        <p>₹ <%= data.price.toLocaleString("en-IN") %>/night &nbsp;<b class="gst">+<i>18%</i>GST</b></p>
+                        <a href="/listing/<%=data._id%>"><button class="btn btn-success">Show Details</button></a>
+                    </div>
+                </div>
+            <% } %>
         </div>
-      </div>
-    <% } %>
-  </div>
-</div>
-
+    </div>
 </body>
 
 <script>
