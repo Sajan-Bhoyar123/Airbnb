@@ -101,12 +101,12 @@ app.get("/",(req,res)=>{
 })
 app.get("/listing/search",async(req,res)=>{
     let {Title} = req.query;
-    const data = await Listing.find({title:Title});
-    if(data.length<1){
+    const datas = await Listing.find({title:Title});
+    if(datas.length<1){
       req.flash("error","Property NOT Found");
       res.redirect("/listing")
     }else{
-           res.render("listing/index.ejs",{data})
+           res.render("listing/index.ejs",{datas})
     }
   
 })
@@ -123,14 +123,14 @@ app.use("/",userRoute);
 app.get("/listing/icon/:icon",async(req,res)=>{
       let {icon} = req.params;
       console.log(icon)
-      const data =await Listing.find({feature:icon});
+      const datas =await Listing.find({feature:icon});
     /*  console.log(data);
       res.render("listing/index.ejs",{data});*/
-    if(data.length<1){
+    if(datas.length<1){
       req.flash("error","NOT Any Property Has This Feature");
       res.redirect("/listing")
     }else{
-           res.render("listing/index.ejs",{data})
+           res.render("listing/index.ejs",{datas})
     }
 })
 
