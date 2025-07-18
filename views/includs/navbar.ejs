@@ -62,7 +62,7 @@
 <!-- ========================================================================================= -->
 
 
-<% if (currUser) { %>
+<% if (curruser) { %>
   <!-- ================================================================ -->
   <!-- NAVBAR 1: Renders for LOGGED-IN USERS                            -->
   <!-- Desktop: Horizontal Layout                                     -->
@@ -88,8 +88,8 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item dropdown profile-dropdown">
             <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="<%= currUser.image.url %>" alt="Profile" class="profile-image me-2">
-              <span><%= currUser.username %></span>
+              <img src="<%= curruser.image.url %>" alt="Profile" class="profile-image me-2">
+              <span><%= curruser.username %></span>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
               <li><a class="dropdown-item" href="#">Profile</a></li>
@@ -116,7 +116,7 @@
         <!-- Mobile Profile Dropdown -->
         <div class="dropdown profile-dropdown">
           <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="<%= currUser.image.url %>" alt="Profile" class="profile-image">
+            <img src="<%= curruser.image.url %>" alt="Profile" class="profile-image">
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
             <!-- Mobile-only links -->
