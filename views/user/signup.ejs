@@ -7,7 +7,7 @@
         <div class="text-center mb-4">
           <h2>SignUp Page</h2>
         </div>
-        <form method="POST" action="/signup" class="needs-validation" novalidate>
+        <form method="POST" action="/signup" class="needs-validation" novalidate enctype="multipart/form-data">
           <div class="mb-3">
             <label for="username" class="form-label text-start w-100">Username</label>
             <input name="username" id="username" type="text" placeholder="Enter your Name" class="form-control" required>
@@ -23,6 +23,11 @@
             <input name="password" id="password" type="password" placeholder="Enter your password" class="form-control" required>
             <div class="invalid-feedback">Enter a Strong Password</div>
           </div>
+          <div class="mb-3 ">
+              <label for="image" class="form-label">Image</label>
+              <input name="image" id="image" type="file" placeholder="Enter  your Photo" class="form-control" required >
+             <div class="invalid-feedback">Enter correct image for your Profile Photo</div>
+         </div>
           <div class="d-grid">
             <button class="btn btn-primary">Sign Up</button>
           </div>

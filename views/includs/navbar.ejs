@@ -1,75 +1,178 @@
 <style>
-   .btn-danger i {
-         display: inline;
-         margin-right: 10px;
-   }
-   .btn-danger{
-      border-radius: 20px;
-   }
-   #search{
-       border-radius: 20px;
-       padding: 0px 3rem;
-   }
+  /* General Navbar Styles */
+  .navbar-brand {
+    font-weight: 600;
+  }
+  .navbar-brand i {
+    color: #ff385c;
+    font-size: 1.75rem;
+  }
+  #search-input {
+    border-radius: 10px;
+    width: 100%;
+    border: 1px solid #ddd;
+  }
+  #search-btn {
+    border-radius: 20px;
+    background-color: #ff385c;
+    border-color: #ff385c;
+  }
+  #search-btn i {
+    margin-right: 5px;
+  }
+  
+  /* Logged-In User Styles */
+  .profile-dropdown .dropdown-toggle::after {
+    display: none; /* Hide default Bootstrap arrow */
+  }
+  .profile-image {
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .dropdown-menu {
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  }
+
+  /* --- Styles for the CUSTOM VERTICAL mobile navbar (when logged in) --- */
+  .navbar-vertical-mobile {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    gap: 1rem; /* Creates space between vertical items */
+  }
+  .navbar-vertical-mobile .navbar-brand {
+    font-size: 1.5rem;
+  }
+  .navbar-vertical-mobile #search-form {
+    width: 90%; /* Make search bar take most of the width */
+    max-width: 400px;
+  }
+  .navbar-vertical-mobile .profile-dropdown {
+    margin-top: 0.5rem;
+  }
+
 </style>
-<nav class="navbar navbar-expand-md bg-body-tertiary sticky-top border-bottom">
+
+<!-- ========================================================================================= -->
+<!-- The EJS logic below will render one of two completely different navbars based on login state -->
+<!-- ========================================================================================= -->
+
+
+<% if (currUser) { %>
+  <!-- ================================================================ -->
+  <!-- NAVBAR 1: Renders for LOGGED-IN USERS                            -->
+  <!-- Desktop: Horizontal Layout                                     -->
+  <!-- Mobile: Custom Vertical Layout (as requested in the first image) -->
+  <!-- ================================================================ -->
+  <nav class="navbar navbar-expand-md bg-body-tertiary sticky-top border-bottom">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/listing"><i class="fa-solid fa-compass"></i></a>
-      <p style="margin-top: 15px; margin-right: 20px; color: rgb(136, 14, 14); font-size:20px; font-weight: 700; ">Airbnb</p>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item ">
-            <button class="btn btn-light btn-sm" style="margin-right: 15px;"> <a class="nav-link" href="/listing">ALL property</a></button>
-          </li>
-          <li class="nav-item">
-          <button class="btn btn-light btn-sm">  <a class="nav-link" href="/listing/new">Add Property</a></button>
+
+      <!-- DESKTOP NAVBAR (Hidden on Mobile) -->
+      <div class="d-none d-md-flex align-items-center w-100">
+        <!-- Desktop Brand & Links -->
+        <a class="navbar-brand me-4" href="/listing"><i class="fa-solid fa-compass"></i> Airbnb</a>
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="/listing">All Property</a></li>
+          <li class="nav-item"><a class="nav-link" href="/listing/new">Add Property</a></li>
+        </ul>
+        <!-- Desktop Search -->
+        <form method="get" action="/listing/search" class="d-flex mx-auto" role="search" style="max-width: 400px;">
+          <input name="Title" class="form-control me-2" type="search" placeholder="Search Destination" id="search-input" aria-label="Search" />
+          <button class="btn btn-danger" id="search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+        </form>
+        <!-- Desktop Profile Dropdown -->
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown profile-dropdown">
+            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="<%= currUser.image.url %>" alt="Profile" class="profile-image me-2">
+              <span><%= currUser.username %></span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+               <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="/user/property">My Property</a></li>
+              <li><a class="dropdown-item" href="/user/bookedproperty">Booked Property</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/logout">Logout</a></li>
+            </ul>
           </li>
         </ul>
-            <div class="nav-item  ">
-                <form method="get" action="/listing/search" class="d-flex" role="search">
-                <input name="Title" class="form-control me-2" type="search" placeholder="Search Destination" id="search" aria-label="Search">
-                <button class="btn btn-danger" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
-               </form>
-            </div>
-           <ul class="navbar-nav ms-auto">
-        <% if(typeof curruser === 'undefined') { %>
-          <!-- Handle the case when curruser is undefined -->
-          <li class="nav-item">
-            <button class="btn btn-light btn-sm" style="margin-right: 15px;"> 
-              <a class="nav-link active" aria-current="page" href="/login">Log In</a>
-            </button>
-          </li>
-          <li class="nav-item">
-            <button class="btn btn-light btn-sm">
-              <a class="nav-link" href="/signup">Sign Up</a>
-            </button>
-          </li>
-        <% } else if(!curruser) { %>
-          <!-- User is not logged in -->
-          <li class="nav-item">
-            <button class="btn btn-light btn-sm" style="margin-right: 15px;"> 
-              <a class="nav-link active" aria-current="page" href="/login">Log In</a>
-            </button>
-          </li>
-          <li class="nav-item">
-            <button class="btn btn-light btn-sm">
-              <a class="nav-link" href="/signup">Sign Up</a>
-            </button>
-          </li>
-        <% } else { %>
-          <!-- User is logged in -->
-          <li class="nav-item">
-            <a class="nav-link" href="#">Welcome, <%= curruser.username %></a>
-          </li>
-          <li class="nav-item">
-            <button class="btn btn-light btn-sm">
-              <a class="nav-link" href="/logout">Logout</a>
-            </button>
-          </li>
-        <% } %>
-      </ul>
+      </div>
+
+      <!-- MOBILE NAVBAR (Hidden on Desktop) -->
+      <div class="d-md-none w-100 navbar-vertical-mobile">
+        <!-- Mobile Brand -->
+        <a class="navbar-brand" href="/listing"><i class="fa-solid fa-compass"></i> Airbnb</a>
+        <!-- Mobile Search -->
+        <form method="get" action="/listing/search" id="search-form" class="d-flex w-100" role="search">
+          <input name="Title" class="form-control" type="search" placeholder="Search Destination" aria-label="Search" />
+          <button class="btn btn-danger ms-2" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+        <!-- Mobile Profile Dropdown -->
+        <div class="dropdown profile-dropdown">
+          <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="<%= currUser.image.url %>" alt="Profile" class="profile-image">
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <!-- Mobile-only links -->
+            <li><a class="dropdown-item" href="/listing">All Property</a></li>
+            <li><a class="dropdown-item" href="/listing/new">Add Property</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <!-- Common links -->
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+<% } else { %>
+  
+  <!-- ================================================================ -->
+  <!-- NAVBAR 2: Renders for LOGGED-OUT USERS                           -->
+  <!-- Desktop: Horizontal Layout                                     -->
+  <!-- Mobile: Standard Hamburger Menu (as requested in the third image) -->
+  <!-- ================================================================ -->
+  <nav class="navbar navbar-expand-md bg-body-tertiary sticky-top border-bottom">
+    <div class="container-fluid">
+      <!-- Brand -->
+      <a class="navbar-brand" href="/listing"><i class="fa-solid fa-compass"></i> Airbnb</a>
+
+      <!-- Mobile Hamburger Toggler -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#loggedOutNavbarContent" aria-controls="loggedOutNavbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Collapsible Content -->
+      <div class="collapse navbar-collapse" id="loggedOutNavbarContent">
+        <!-- Links (All Property / Add Property) -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="/listing">All Property</a></li>
+          <li class="nav-item"><a class="nav-link" href="/listing/new">Add Property</a></li>
+        </ul>
+
+        <!-- Search Bar -->
+        <form method="get" action="/listing/search" class="d-flex mx-auto" role="search">
+          <input name="Title" class="form-control me-2" type="search" placeholder="Search Destination" id="search-input" aria-label="Search" />
+          <button class="btn btn-danger" id="search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+        </form>
+
+        <!-- Login / Sign Up Links -->
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="/login"><b>Login</b></a></li>
+          <li class="nav-item"><a class="nav-link" href="/signup"><b>Sign Up</b></a></li>
+        </ul>
       </div>
     </div>
   </nav>
+
+<% } %>

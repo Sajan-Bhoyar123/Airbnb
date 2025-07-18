@@ -5,8 +5,11 @@ const renderSignup = (req,res)=>{
 }
 const signup = async(req,res)=>{
      try{
-         let {username,email,password} = req.body;
-         let user1 = new user({username:username,email:email});
+         let {username,email,password,image} = req.body;
+          let url = req.file.path;          
+          let filename = req.file.filename;
+          let user1 = new user({username:username,email:email});
+         user1.image = {url,filename};
        const registeruser = await user.register(user1,password);
        req.logIn(registeruser,(err)=>{
           if(err){
