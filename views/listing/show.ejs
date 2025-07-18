@@ -3,6 +3,35 @@
     const mapToken = "<%= process.env.MAP_TOKEN %>";
     const data = <%- JSON.stringify(data) %>;
 </script>
+<style>
+   .booking-modal {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 1.5rem;
+  border: 1px solid #ccc;
+  z-index: 9999;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.26);
+  border-radius: 8px;
+}
+.modal-content {
+  text-align: center;
+}
+.close {
+  float: right;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.book-btn {
+  background: #00aaff;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: none;
+} 
+</style>
 <body>
     <div class="headerpage">
         <h2>Property Details</h2>
@@ -31,6 +60,11 @@
                 </form>
             </div>
             <% } %>
+              <% if (!curruser || (curruser && data.owner._id.toString() !== curruser._id.toString())) { %>
+                <button onclick="<%= curruser ? `showBookingModal(${data.price})` : `window.location.href='/login'` %>" class="book-btn">
+                  Book Property
+                </button>
+          <% } %>
         </div>
 
         <% if(curruser){ %>
@@ -90,5 +124,41 @@
             <div id="map"></div>
         </div>
     </div>
+   <div id="bookingModal" class="booking-modal" style="display:none;">
+  <div class="modal-content">
+    <span onclick="closeBookingModal()" class="close">&times;</span>
+    <h3>Scan to Pay</h3>
+    <img src="<%=data.image.url%>" alt="QR Code" style="width:200px;">
+    
+    <label for="nights">Number of nights:</label>
+    <input type="number" id="nights" name="nights" value="1" min="1" onchange="updatePrice(<%= data.price %>)">
+    
+    <p>Total Price: ₹<span id="totalPrice"><%= data.price %></span></p>
+    
+    <form method="POST" action="/bookings/<%= data._id %>">
+      <input type="hidden" name="nights" id="nightsInput" value="1">
+      <input type="hidden" name="totalPrice" id="totalPriceInput" value="<%= data.price %>">
+      <button type="submit">Confirm Booking</button>
+    </form>
+  </div>
+</div>
+<script>
+  function showBookingModal(price) {
+    document.getElementById('bookingModal').style.display = 'block';
+    updatePrice(price);
+  }
+
+  function closeBookingModal() {
+    document.getElementById('bookingModal').style.display = 'none';
+  }
+
+  function updatePrice(price) {
+    const nights = document.getElementById('nights').value;
+    const total = price * nights;
+    document.getElementById('totalPrice').innerText = total;
+    document.getElementById('nightsInput').value = nights;
+    document.getElementById('totalPriceInput').value = total;
+  }
+</script>
 </body>
 <script src="/js/map.js"></script>

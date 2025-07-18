@@ -11,6 +11,7 @@ const flash = require('connect-flash');
 const passport = require("passport");
 const Localstratergy = require("passport-local");
 const user = require("./models/user.js");
+const Booking = require("./models/booking.js");
 
 const DBURL = process.env.ATLASDB_URL;
 console.log("Connecting to MongoDB Atlas:", DBURL);
@@ -119,6 +120,9 @@ app.use("/listing/:id/review",reviewRoute);
   // require user route
 const userRoute=  require("./route/user.js");
 app.use("/",userRoute);
+  // require Booking Route
+const bookingRoute = require("./route/booking.js");
+app.use("/bookings",bookingRoute);
   //icon Route
 app.get("/listing/icon/:icon",async(req,res)=>{
       let {icon} = req.params;
