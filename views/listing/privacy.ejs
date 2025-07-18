@@ -1,0 +1,233 @@
+<%- layout("/layouts/biolerplate.ejs")%>
+<style>
+body {
+    margin: 0;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background-color: #ffffff;
+    color: #222222;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.top-bar {
+    height: 4px;
+    background-color: #222222;
+}
+
+.main-container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 40px; /* Default padding for larger screens */
+}
+
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 40px;
+    gap: 100px; /* Gap between content and sidebar on large screens */
+}
+
+.privacy-content {
+    width: 65%;
+    max-width: 650px;
+}
+
+.contact-sidebar {
+    width: 35%;
+    max-width: 320px;
+    padding-top: 20px;
+}
+
+.breadcrumb {
+    font-size: 14px;
+    color: #717171;
+    margin-bottom: 24px;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-top: 32px;
+    margin-bottom: 16px;
+}
+
+h2 a {
+    color: #222222;
+    text-decoration: none;
+}
+
+h2 a:hover {
+    text-decoration: underline;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0 0 16px 0;
+}
+
+a {
+    color: #222222;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+a:hover {
+    color: #000000;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    margin-bottom: 16px;
+}
+
+ul li a {
+    font-size: 16px;
+}
+
+.footer-note {
+    margin-top: 48px;
+    font-size: 14px;
+    color: #222222;
+}
+
+.contact-box {
+    padding-left: 24px;
+    border-left: 1px solid #dddddd;
+}
+
+.contact-box h2 {
+    font-size: 18px;
+    margin-top: 0;
+}
+
+.contact-box p {
+    font-size: 14px;
+}
+
+.contact-box button {
+    background-color: #ffffff;
+    border: 1px solid #222222;
+    color: #222222;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 8px;
+    width: auto;
+}
+
+.contact-box button:hover {
+    background-color: #f7f7f7;
+}
+
+.feedback-link {
+    margin-top: 16px;
+}
+
+.feedback-link a {
+    font-size: 14px;
+}
+
+/* --- Responsive Styles (for tablets and smaller) --- */
+@media (max-width: 950px) {
+    .content-wrapper {
+        flex-direction: column; /* Stack the columns vertically */
+        gap: 48px; /* Adjust the gap for the vertical layout */
+    }
+
+    .privacy-content,
+    .contact-sidebar {
+        width: 100%; /* Make each section take full width */
+        max-width: none; /* Remove the max-width limit */
+    }
+    
+    .contact-sidebar {
+        padding-top: 0;
+    }
+
+    .contact-box {
+        border-left: none; /* Remove the side border */
+        border-top: 1px solid #dddddd; /* Add a top border for separation */
+        padding-left: 0; /* Remove side padding */
+        padding-top: 24px; /* Add padding to the top */
+    }
+}
+
+/* --- Responsive Styles (for mobile phones) --- */
+@media (max-width: 768px) {
+    .main-container {
+        padding: 0 24px; /* Reduce side padding on small screens */
+    }
+
+    h1 {
+        font-size: 28px; /* Slightly smaller H1 for mobile */
+    }
+
+    h2 {
+        font-size: 20px; /* Slightly smaller H2 for mobile */
+    }
+}
+</style>
+<body>
+    <div class="top-bar"></div>
+    <div class="main-container">
+        <div class="content-wrapper">
+            <main class="privacy-content">
+                <p class="breadcrumb">Legal terms</p>
+                <h1>Airbnb Privacy</h1>
+                <p>Our Privacy Policy explains what personal information we collect, how we use personal information, how personal information is shared, and privacy rights.</p>
+
+                <section>
+                    <h2><a href="#">Privacy Policy</a></h2>
+                    <p>Please review the supplemental privacy policies linked within the privacy policy documents, such as for certain Airbnb services, that may be applicable to you.</p>
+                </section>
+
+                <section>
+                    <h2>Supplemental Privacy Policy Documents</h2>
+                    <ul>
+                        <li><a href="#">Outside the United States Supplement</a></li>
+                        <li><a href="#">United States Privacy Supplement</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Enterprise Customers and Airbnb for Work</a></li>
+                        <li><a href="#">Privacy Supplement for China Users</a></li>
+                        <li><a href="#">Brazil Privacy Supplement</a></li>
+                        <li><a href="#">Privacy Policy Supplement for Services and Experiences</a></li>
+                        <li><a href="#">Colombia Only</a></li>
+                        <li><a href="#">Türkiye Only</a></li>
+                        <li><a href="#">Non-User DAC7 Privacy Notice</a></li>
+                        <li><a href="#">Airbnb-friendly Marketplace Supplemental Privacy Terms</a></li>
+                        <li><a href="#">Insurance Supplement</a></li>
+                    </ul>
+                </section>
+                
+                <p class="footer-note">
+                    <a href="#">Airbnb.org</a> is a separate and independent entity from Airbnb, Inc. Access the <a href="#">Airbnb.org Privacy Policy</a>.
+                </p>
+            </main>
+
+            <aside class="contact-sidebar">
+                <div class="contact-box">
+                    <h2>Need to get in touch?</h2>
+                    <p>We'll start with some questions and get you to the right place.</p>
+                    <button>Contact us</button>
+                    <p class="feedback-link">You can also <a href="#">give us feedback</a>.</p>
+                </div>
+            </aside>
+        </div>
+    </div>
+</body>

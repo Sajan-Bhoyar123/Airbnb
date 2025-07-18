@@ -134,6 +134,12 @@ app.get("/listing/icon/:icon",async(req,res)=>{
     }
 })
 
+app.get("/privacy",(req,res)=>{
+res.render("listing/privacy.ejs")
+})
+app.get("/terms",(req,res)=>{
+res.render("listing/terms.ejs")
+})
 app.use((err,req,res,next)=>{
   console.log(err);
     let {status = 404,message} = err;

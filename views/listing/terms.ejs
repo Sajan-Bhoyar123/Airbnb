@@ -1,0 +1,223 @@
+<%- layout("/layouts/biolerplate.ejs")%>
+
+<style>
+    /* --- Base Styles (for all screen sizes) --- */
+body {
+    margin: 0;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background-color: #ffffff;
+    color: #222222;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.main-container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 40px; /* Default padding for larger screens */
+}
+
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 100px; /* Gap between content and sidebar on large screens */
+}
+
+.terms-content {
+    width: 65%;
+    max-width: 650px;
+}
+
+.contact-sidebar {
+    width: 35%;
+    max-width: 320px;
+    padding-top: 20px;
+}
+
+.breadcrumb {
+    font-size: 14px;
+    color: #717171;
+    margin-bottom: 24px;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-top: 48px;
+    margin-bottom: 16px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0 0 16px 0;
+}
+
+a {
+    color: #222222;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+a:hover {
+    color: #000000;
+}
+
+/* --- Info Box --- */
+.info-box {
+    background-color: #f7f7f7;
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.info-box-text p {
+    font-size: 14px;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.info-box-text p:not(:last-child) {
+    margin-bottom: 16px;
+}
+
+.info-box-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.arbitration-notice {
+    margin-top: 32px;
+}
+
+/* --- Sidebar --- */
+.contact-box {
+    padding-left: 24px;
+    border-left: 1px solid #dddddd;
+}
+
+.contact-box h2 {
+    font-size: 18px;
+    margin-top: 0;
+}
+
+.contact-box p {
+    font-size: 14px;
+}
+
+.contact-box button {
+    background-color: #ffffff;
+    border: 1px solid #222222;
+    color: #222222;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 8px;
+    width: auto;
+}
+
+.contact-box button:hover {
+    background-color: #f7f7f7;
+}
+
+.feedback-link {
+    margin-top: 16px;
+}
+
+.feedback-link a {
+    font-size: 14px;
+}
+
+/* --- Responsive Styles (for tablets and smaller) --- */
+@media (max-width: 950px) {
+    .content-wrapper {
+        flex-direction: column; /* Stack the columns vertically */
+        gap: 48px; /* Adjust the gap for the vertical layout */
+    }
+
+    .terms-content,
+    .contact-sidebar {
+        width: 100%; /* Make each section take full width */
+        max-width: none; /* Remove the max-width limit */
+    }
+    
+    .contact-sidebar {
+        padding-top: 0;
+    }
+
+    .contact-box {
+        border-left: none; /* Remove the side border */
+        border-top: 1px solid #dddddd; /* Add a top border for separation */
+        padding-left: 0; /* Remove side padding */
+        padding-top: 24px; /* Add padding to the top */
+    }
+}
+
+/* --- Responsive Styles (for mobile phones) --- */
+@media (max-width: 768px) {
+    .main-container {
+        padding: 24px; /* Reduce side padding on small screens */
+    }
+
+    h1 {
+        font-size: 28px; /* Slightly smaller H1 for mobile */
+    }
+
+    h2 {
+        font-size: 20px; /* Slightly smaller H2 for mobile */
+    }
+}
+</style>
+<body>
+    <div class="main-container">
+        <div class="content-wrapper">
+            <main class="terms-content">
+                <p class="breadcrumb">Legal terms</p>
+                <h1>Terms of Service</h1>
+
+                <div class="info-box">
+                    <div class="info-box-icon">
+                        <svg viewBox="0 0 24 24" fill="#E8A038" width="24px" height="24px"><path d="M7 2h10v2h-2v2h-2V4H9v2H7V2zm3.5 6L12 9.5l1.5 1.5V16h-3v-5.5zM6 8v11a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V8h2v11a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V8h2z"></path></svg>
+                    </div>
+                    <div class="info-box-text">
+                        <p>If your country of residence or establishment is within the European Economic Area (“EEA”), Switzerland or the United Kingdom, the <a href="#">Terms of Service for European Users</a> apply to you.</p>
+                        <p>If your country of residence or establishment is outside of the EEA, Switzerland, Australia, and the United Kingdom, the <a href="#">Terms of Service for Users outside of the EEA, UK, and Australia</a> apply to you.</p>
+                        <p>If your country of residence or establishment is in Australia, the <a href="#">Terms of Service for Australian Users</a> apply to you.</p>
+                    </div>
+                </div>
+
+                <section>
+                    <h2>Terms of Service for European Users</h2>
+                    <p>As a consumer who resides in the EEA you can access the European Commission’s online dispute resolution platform here: <a href="https://ec.europa.eu/consumers/odr">https://ec.europa.eu/consumers/odr</a>. Please note that Airbnb is not committed nor obliged to use an alternative dispute resolution entity within the meaning of Directive 2013/11 EU to resolve disputes with consumers. The European Commission’s online dispute resolution platform is not available for residents of Switzerland or the United Kingdom.</p>
+                    <p class="arbitration-notice">
+                        <strong>Section 25 of these Terms contains an arbitration agreement and class action waiver that applies to all claims brought against Airbnb in the United States. Please read them carefully.</strong>
+                    </p>
+                </section>
+                
+            </main>
+
+            <aside class="contact-sidebar">
+                <div class="contact-box">
+                    <h2>Need to get in touch?</h2>
+                    <p>We'll start with some questions and get you to the right place.</p>
+                    <button>Contact us</button>
+                    <p class="feedback-link">You can also <a href="#">give us feedback</a>.</p>
+                </div>
+            </aside>
+        </div>
+    </div>
+</body>
