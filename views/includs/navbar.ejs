@@ -11,14 +11,17 @@
     border-radius: 10px;
     width: 100%;
     border: 1px solid #ddd;
+    width: 100%;
   }
   #search-btn {
     border-radius: 20px;
     background-color: #ff385c;
     border-color: #ff385c;
+    display: flex;
   }
   #search-btn i {
     margin-right: 5px;
+    margin-top: 7px;
   }
   
   /* Logged-In User Styles */
@@ -76,8 +79,8 @@
         <!-- Desktop Brand & Links -->
         <a class="navbar-brand me-4" href="/listing"><i class="fa-solid fa-compass"></i> Airbnb</a>
         <ul class="navbar-nav me-auto">
-          <li class="nav-item"><a class="nav-link" href="/listing">All Property</a></li>
-          <li class="nav-item"><a class="nav-link" href="/listing/new">Add Property</a></li>
+          <li class="nav-item"><a class="nav-link" href="/listing"><button class="btn btn-light">All Property</button></a></li>
+          <li class="nav-item"><a class="nav-link" href="/listing/new"><button class="btn btn-light">Add Property</button></a></li>
         </ul>
         <!-- Desktop Search -->
         <form method="get" action="/listing/search" class="d-flex mx-auto" role="search" style="max-width: 400px;">
@@ -120,8 +123,8 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
             <!-- Mobile-only links -->
-            <li><a class="dropdown-item" href="/listing">All Property</a></li>
-            <li><a class="dropdown-item" href="/listing/new">Add Property</a></li>
+            <li><a class="dropdown-item" href="/listing"><button class="btn btn-light">All Property</button></a></li>
+            <li><a class="dropdown-item" href="/listing/new"><button class="btn btn-light">Add Property</button></a></li>
             <li><hr class="dropdown-divider"></li>
             <!-- Common links -->
             <li><a class="dropdown-item" href="#">Profile</a></li>
@@ -156,8 +159,8 @@
       <div class="collapse navbar-collapse" id="loggedOutNavbarContent">
         <!-- Links (All Property / Add Property) -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="/listing">All Property</a></li>
-          <li class="nav-item"><a class="nav-link" href="/listing/new">Add Property</a></li>
+          <li class="nav-item"><a class="nav-link" href="/listing"><button class="btn btn-light">All Property</button></a></li>
+          <li class="nav-item"><a class="nav-link" href="/listing/new"><button class="btn btn-light">Add Property</button></a></li>
         </ul>
 
         <!-- Search Bar -->
@@ -168,8 +171,8 @@
 
         <!-- Login / Sign Up Links -->
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="/login"><b>Login</b></a></li>
-          <li class="nav-item"><a class="nav-link" href="/signup"><b>Sign Up</b></a></li>
+          <li class="nav-item"><a class="nav-link" href="/login"><b><button class="btn btn-light">Login</button></b></a></li>
+          <li class="nav-item"><a class="nav-link" href="/signup"><b><button class="btn btn-light">Sign Up</button></b></a></li>
         </ul>
       </div>
     </div>

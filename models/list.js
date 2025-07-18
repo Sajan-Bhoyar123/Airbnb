@@ -8,7 +8,7 @@ const listschema = new mongoose.Schema({
           type:String,
           required:true,
      },
-     description:{
+     discription:{
           type: String,
      },
      image:{
