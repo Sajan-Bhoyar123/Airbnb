@@ -1,9 +1,11 @@
 
 const express = require("express");
-const { model, models } = require("mongoose");
+const mongoose = require("mongoose");
 const router = express.Router();
 const user = require("../models/user.js");
+const Listing = require("../models/list.js");
 const passport = require("passport");
+const wrapasync = require("../util/wrapasync.js");
 const {saveurl,isloggedin,isowner,isauthor} = require("../middleware.js");
 const userController = require("../controller/user.js");
 const multer  = require('multer')
@@ -18,6 +20,18 @@ router.route("/login")
 .get(userController.renderLogin)
 .post(saveurl,passport.authenticate("local",{failureRedirect:"/login",failureFlash:true}),userController.Login );
 
+router.get("/user/property", isloggedin, wrapasync(async (req, res) => {
+    const userId = new mongoose.Types.ObjectId(req.user._id); // Ensure ObjectId
+    const datas = await Listing.find({ owner: userId }).populate("owner");
+    console.log("Logged in user:", req.user.username);
+    console.log("Found properties:", datas);
+    if(datas.length<1){
+       req.flash("error","NOT Any Property Created By You");
+       res.redirect("/listing");
+    }else{
+       res.render("listing/index.ejs",{datas});
+    }
 
+}));
 router.get("/logout",userController.Loggout)
 module.exports = router;
