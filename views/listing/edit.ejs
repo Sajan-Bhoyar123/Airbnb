@@ -5,7 +5,7 @@
   </div>
 <div class="row"></div>
    <div class="col-6 offset-3">
-     <form method="post" action="/listing/<%=data._id%>?_method=PATCH" class="needs-validation" novalidate enctype="multipart/form-data">
+     <form method="post" action="/listing/<%=data._id%>?_method=PATCH" class="needs-validation" enctype="multipart/form-data">
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
           <input name="title" id="title" type="text" placeholder="<%=data.title%>" class="form-control" required>
