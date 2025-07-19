@@ -71,7 +71,8 @@ const updateRoute=async (req, res, next) => {
              throw new ExpressError(400,"enter correct data");
            }
          const { id } = req.params;
-         const { title, discription, image,feature, price, location, country } = req.body;
+         //const { title, discription, image,feature, price, location, country } = req.body;
+         const {discription} = req.body;
           let response =   await geocodingClient.forwardGeocode({
                query: location ,
                limit: 1,
@@ -80,7 +81,8 @@ const updateRoute=async (req, res, next) => {
            ;
          const updatedData = await Listing.findByIdAndUpdate(
            id,
-           { title, discription, image,feature, price, location, country },
+           //{ title, discription, image,feature, price, location, country },
+           {discription:discription},
            { new: true, runValidators: true }
           );
         if(typeof req.file !== "undefined" ){
