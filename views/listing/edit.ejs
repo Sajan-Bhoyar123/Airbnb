@@ -8,7 +8,7 @@
      <form method="post" action="/listing/<%=data._id%>?_method=PATCH" class="needs-validation" enctype="multipart/form-data">
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
-          <input name="title" id="title" type="text" placeholder="<%=data.title%>" class="form-control" required>
+          <input name="title" id="title" type="text" placeholder="<%=data.title%>" class="form-control">
           <div class="invalid-feedback">Enter Title of Your Property</div>
         </div>
  
@@ -45,19 +45,19 @@
         </div>
         <div class="mb-3">
            <label for="price" class="form-label">Price</label>
-           <input name="price" id="price" type="number" placeholder="<%=data.price%>" class="form-control" required>
+           <input name="price" id="price" type="number" placeholder="<%=data.price%>" class="form-control" >
            <div class="invalid-feedback">Enter a Price</div>
         </div>
         
         <div class="mb-3">
            <label for="location" class="form-label">Location</label>
-           <input name="location" id="location" type="text" placeholder="<%=data.location%>" class="form-control" required>
+           <input name="location" id="location" type="text" placeholder="<%=data.location%>" class="form-control">
            <div class="invalid-feedback">Enter a Correct Location</div>
         </div>
         
         <div class="mb-3">
            <label for="country" class="form-label">Country</label>
-           <input name="country" id="country" type="text" placeholder="<%=data.country%>" class="form-control" required>
+           <input name="country" id="country" type="text" placeholder="<%=data.country%>" class="form-control" >
            <div class="invalid-feedback">Enter a Correct Coutry </div>
         </div>
         
