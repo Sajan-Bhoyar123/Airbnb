@@ -43,7 +43,7 @@ router.put('/users/:id',isloggedin, upload.single('image'), wrapasync(async (req
     User.email = email; 
     await User.save();
    req.flash('success', 'Profile updated!');
-   res.redirect('/login'); // or /profile page
+   res.redirect('/listing'); // or /profile page
 }));
 
 router.get("/user/property", isloggedin, wrapasync(async (req, res) => {
