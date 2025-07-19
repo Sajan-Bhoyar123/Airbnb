@@ -21,6 +21,31 @@ router.route("/login")
 .get(userController.renderLogin)
 .post(saveurl,passport.authenticate("local",{failureRedirect:"/login",failureFlash:true}),userController.Login );
 
+
+router.get("/user/edit",isloggedin,wrapasync(async(req,res)=>{
+    console.log("user id = ",req.user._id)
+     let user = await  user.findById(req.user._id);
+     console.log("Login User Data  = ",user);
+    res.render("user/edit.ejs",{user});
+}));
+
+
+router.put('/users/:id',isloggedin, upload.single('image'), wrapasync(async (req, res) => {
+    const user = await user.findById(req.params.id);
+    let {username,email} = req.body
+   if (req.file) {
+        user.image = {
+            url: req.file.path,
+            filename: req.file.filename
+        };
+   }
+    user.username = username;
+    user.email = email; 
+    await user.save();
+   req.flash('success', 'Profile updated!');
+   res.redirect('/login'); // or /profile page
+}));
+
 router.get("/user/property", isloggedin, wrapasync(async (req, res) => {
     const userId = new mongoose.Types.ObjectId(req.user._id); // Ensure ObjectId
     const datas = await Listing.find({ owner: userId }).populate("owner");
