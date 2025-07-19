@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const router = express.Router();
 const user = require("../models/user.js");
 const Listing = require("../models/list.js");
+const Booking = require("../models/booking.js");
 const passport = require("passport");
 const wrapasync = require("../util/wrapasync.js");
 const {saveurl,isloggedin,isowner,isauthor} = require("../middleware.js");
@@ -33,5 +34,16 @@ router.get("/user/property", isloggedin, wrapasync(async (req, res) => {
     }
 
 }));
+router.get("/user/bookedproperty", isloggedin, wrapasync(async (req, res) => {
+    const bookings = await Booking.find({ user: req.user._id }).populate("property"); // populate the booked property details
+    if(bookings.length<1){
+        req.flash("error","You NOT Booked Any Property till Now");
+        res.redirect("/listing");
+    }else{
+       res.render("user/bookedProperties", { bookings });
+    }
+}));
+
+
 router.get("/logout",userController.Loggout)
 module.exports = router;
