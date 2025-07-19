@@ -24,24 +24,24 @@ router.route("/login")
 
 router.get("/user/edit",isloggedin,wrapasync(async(req,res)=>{
     console.log("user id = ",req.user._id)
-     let user = await  user.findById(req.user._id);
-     console.log("Login User Data  = ",user);
-    res.render("user/edit.ejs",{user});
+     let User = await  user.findById(req.user._id);
+     console.log("Login User Data  = ",User);
+     res.render("user/edit.ejs",{User});
 }));
 
 
 router.put('/users/:id',isloggedin, upload.single('image'), wrapasync(async (req, res) => {
-    const user = await user.findById(req.params.id);
+    const User = await user.findById(req.params.id);
     let {username,email} = req.body
    if (req.file) {
-        user.image = {
+        User.image = {
             url: req.file.path,
             filename: req.file.filename
         };
    }
-    user.username = username;
-    user.email = email; 
-    await user.save();
+    User.username = username;
+    User.email = email; 
+    await User.save();
    req.flash('success', 'Profile updated!');
    res.redirect('/login'); // or /profile page
 }));

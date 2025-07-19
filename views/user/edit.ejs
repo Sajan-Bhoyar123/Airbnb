@@ -10,12 +10,12 @@
         <form action="/users/<%= user._id %>?_method=PUT" method="POST" enctype="multipart/form-data" >
           <div class="mb-3">
             <label for="username" class="form-label text-start w-100">Username</label>
-            <input name="username" id="username" type="text" placeholder="<%=user.username%>" class="form-control" required>
+            <input name="username" id="username" type="text" placeholder="<%=User.username%>" class="form-control" required>
             <div class="invalid-feedback">Please Enter Your Name</div>
           </div>
           <div class="mb-3">
             <label for="email" class="form-label text-start w-100">Email</label>
-            <input name="email" id="email" type="email" placeholder="<%=user.email%>" class="form-control" required>
+            <input name="email" id="email" type="email" placeholder="<%=User.email%>" class="form-control" required>
             <div class="invalid-feedback">Enter Your Email</div>
           </div>
           <div class="mb-3 ">
