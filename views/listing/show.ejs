@@ -60,11 +60,13 @@
                 </form>
             </div>
             <% } %>
-              <% if (!curruser || (curruser && data.owner._id.toString() !== curruser._id.toString())) { %>
+            <% if (!curruser ||((curruser && (data.owner._id.toString() !== curruser._id.toString())) && (alreadyBooked===false))) { %>
                 <button onclick="<%= curruser ? `showBookingModal(${data.price})` : `window.location.href='/login'` %>" class="book-btn">
                   Book Property
                 </button>
-          <% } %>
+           <% } else if(data.owner._id.toString() !== curruser._id.toString()) {%>
+               <a href="/user/bookedproperty"> <button class="btn btn-success">Show Booking</button></a>
+           <%} %>
         </div>
 
         <% if(curruser){ %>

@@ -1,5 +1,6 @@
 const { models } = require("mongoose");
 const Listing = require("../models/list.js");
+const Booking = require("../models/booking.js");
 const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const mapToken= process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
@@ -14,12 +15,19 @@ const renderAddpage = (req,res)=>{
 const showRoute = async(req,res)=>{
       let {id} = req.params;
       const data = await Listing.findById(id).populate({path:"reviews",populate:{path:"author"}}).populate("owner"); 
+      alreadyBooked = false;
+      if (req.user) {
+         const booking = await Booking.findOne({ property: id, user: req.user._id });
+         if (booking) {
+            alreadyBooked = true;
+          }
+      }
      
       if(!data){
             req.flash("error","your requested property is Not exist");
             res.redirect("/listing")
       }else{
-            res.render("./listing/show.ejs",{data});
+            res.render("./listing/show.ejs",{data,alreadyBooked});
      }     
 } 
 const insertRoute = async(req,res)=>{

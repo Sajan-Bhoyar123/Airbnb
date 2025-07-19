@@ -44,6 +44,14 @@ router.get("/user/bookedproperty", isloggedin, wrapasync(async (req, res) => {
     }
 }));
 
+router.delete("/user/:id",isloggedin,wrapasync(async(req,res)=>{
+    let {id} = req.params;
+    console.log(id);
+    const booking = await Booking.findByIdAndDelete(id);
+    console.log(booking);
+    res.redirect("/user/bookedproperty");
+}));
+
 
 router.get("/logout",userController.Loggout)
 module.exports = router;

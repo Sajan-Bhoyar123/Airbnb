@@ -72,6 +72,9 @@
           <p><strong>Nights:</strong> <%= booking.nights %></p>
           <p><strong>Total Price:</strong> ₹<%= booking.totalPrice %></p>
           <p><strong>Booked on:</strong> <%= booking.createdAt.toDateString() %></p>
+          <form method="post" action="/user/<%=booking._id%>?_method=DELETE">
+                <button class="btn btn-danger">Cancle(10% Amount reduce)</button>
+           </form>
         </div>
       </div>
     <% }); %>
