@@ -45,7 +45,7 @@
                     <li>Owner : <%=data.owner.username%></li>
                     <li><%=data.discription%></li>
                     <li><%=data.feature%></li>
-                    <li><%=data.price%></li>
+                    <li>₹ <%= data.price.toLocaleString("en-IN") %>/night </li>
                     <li><%=data.location%></li>
                     <li><%=data.country%></li>
                 </ul>

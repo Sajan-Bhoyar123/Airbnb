@@ -71,18 +71,16 @@ const updateRoute=async (req, res, next) => {
              throw new ExpressError(400,"enter correct data");
            }
          const { id } = req.params;
-         //const { title, discription, image,feature, price, location, country } = req.body;
-         const {discription} = req.body;
-          /*let response =   await geocodingClient.forwardGeocode({
+         const { title, discription, image,feature, price, location, country } = req.body;
+          let response =   await geocodingClient.forwardGeocode({
                query: location ,
                limit: 1,
             })
             .send()
-           ;*/
+           ;
          const updatedData = await Listing.findByIdAndUpdate(
            id,
-           //{ title, discription, image,feature, price, location, country },
-           {discription:discription},
+           { title, discription, image,feature, price, location, country },
            { new: true, runValidators: true }
           );
         if(typeof req.file !== "undefined" ){
@@ -92,7 +90,7 @@ const updateRoute=async (req, res, next) => {
               await updatedData.save();
         }
         console.log(updatedData);
-      //updatedData.geometry = response.body.features[0].geometry;
+      updatedData.geometry = response.body.features[0].geometry;
       await updatedData.save();
        req.flash("success","successfully Edit a property");
        console.log(updatedData);
