@@ -28,8 +28,9 @@ const isowner =async (req,res,next)=>{
 const isauthor =async (req,res,next)=>{
     let {id,reviewid} = req.params;
     const reviews = await review.findById(reviewid);
-    if(!reviews.author.equals(res.locals.curruser._id)){
-        req.flash("error","you are Not a Author of that review");
+    const listing = await Listing.findById(id);
+    if((!reviews.author.equals(res.locals.curruser._id))&&(!listing.owner.equals(res.locals.curruser._id))){
+        req.flash("error","you are Not a Author OR Owner of that review OR Property");
         res.redirect(`/listing/${id}`);
     }else{
       next();

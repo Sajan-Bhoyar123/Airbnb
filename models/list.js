@@ -21,12 +21,15 @@ const listschema = new mongoose.Schema({
      },
      price:{
           type:Number,
+          require:true
      },
      location:{
           type:String,
+          require:true
      },
      country:{
-            type:String
+            type:String,
+            require:true
      },
      reviews:[
           {
