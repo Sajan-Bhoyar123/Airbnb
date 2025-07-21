@@ -134,7 +134,7 @@ app.get("/listing/icon/:icon",async(req,res)=>{
       req.flash("error","NOT Any Property Has This Feature");
       res.redirect("/listing")
     }else{
-           res.render("listing/indexx.ejs",{datas})
+           res.render("listing/index.ejs",{datas})
     }
 })
 
@@ -150,28 +150,27 @@ app.get("/city",wrapasync(async(req,res)=>{
     console.log("city = ",city);
     const datas =await Listing.find({location:city});
     if(datas.length<1){
-         req.flash("error","NOT any Property belong to that City");
+         req.flash("error",`NOT any Property belong to that ${city} City`);
          res.redirect("/listing");
-    }else{
-         res.render("listing/index.ejs",{datas});
-    }
-    
-}));
-app.get("/city/:feature",wrapasync(async(req,res)=>{
-    let {feature} = req.params;
-    let {city} = req.query;
-    console.log("feature = ",feature);
-    console.log("city = ",city);
-    const datas =await Listing.find({$and:[{location:city},{feature:feature}]});
-    if(datas.length<1){
-         req.flash("error","NOT any Property of that city belong to that feature");
-         res.redirect(`/listing/icon/${feature}`);
     }else{
          res.render("listing/indexx.ejs",{datas});
     }
-
+    
+}));
+app.get("/listing/icon/:iconname/city/:cityname",wrapasync(async(req,res)=>{
+      let {iconname,cityname} = req.params;
+      console.log("iconname = ",iconname)
+       console.log("cityname = ",cityname)
+      const datas = await Listing.find({$and:[{feature:iconname},{location:cityname}]});
+      console.log(datas);
+      if(datas.length<1){
+         req.flash("error",`NOT any Property in ${cityname} belong to that ${iconname} icon`);
+         res.redirect(`http://localhost:3000/city?city=${cityname}`);
+      }else{
+         res.render("listing/indexx.ejs",{datas});
+      }
+      
 }))
-
 app.use((err,req,res,next)=>{
   console.log(err);
     let {status = 404,message} = err;

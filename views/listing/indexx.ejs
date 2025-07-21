@@ -79,43 +79,43 @@
     <div class="filters">
         <div class="filter">
             <i class="fa-solid fa-fire"></i>
-            <a href="/listing/icon/Trending">Trending</a>
+            <a href="/listing/icon/Trending/city/<%=datas[0].location%>">Trending</a>
         </div>
         <div class="filter">
             <i class="fa-solid fa-bed"></i>
-            <a href="/listing/icon/Rooms">Rooms</a>
+            <a href="/listing/icon/Rooms/city/<%=datas[0].location%>">Rooms</a>
         </div>
         <div class="filter">
             <i class="fa-solid fa-mountain-city"></i>
-            <a href="/listing/icon/Mountain City">Mountain City</a>
+            <a href="/listing/icon/Mountain City/city/<%=datas[0].location%>">Mountain City</a>
         </div>
         <div class="filter">
             <i class="fa-solid fa-mountain"></i>
-            <a href="/listing/icon/Mountains">Mountains</a>
+            <a href="/listing/icon/Mountains/city/<%=datas[0].location%>">Mountains</a>
         </div>
         <div class="filter">
             <i class="fa-solid fa-chess-rook"></i>
-            <a href="/listing/icon/Castles">Castles</a>
+            <a href="/listing/icon/Castles/city/<%=datas[0].location%>">Castles</a>
         </div>
         <div class="filter">
             <i class="fa-solid fa-person-swimming"></i>
-            <a href="/listing/icon/Amazing Pools">Amazing Pools</a>
+            <a href="/listing/icon/Amazing Pools/city/<%=datas[0].location%>">Amazing Pools</a>
         </div>
         <div class="filter">
             <i class="fa-solid fa-snowflake"></i>
-            <a href="/listing/icon/Arctic">Arctic</a>
+            <a href="/listing/icon/Arctic/city/<%=datas[0].location%>">Arctic</a>
         </div>
         <div class="filter">
             <i class="fa-solid fa-campground"></i>
-            <a href="/listing/icon/Champing">Champing</a>
+            <a href="/listing/icon/Champing/city/<%=datas[0].location%>">Champing</a>
         </div>
         <div class="filter">
             <i class="fa-solid fa-cow"></i>
-            <a href="/listing/icon/Farms">Farms</a>
+            <a href="/listing/icon/Farms/city/<%=datas[0].location%>">Farms</a>
         </div>
         <div class="filter">
             <i class="fa-solid fa-umbrella-beach"></i>
-            <a href="/listing/icon/Beach">Beach</a>
+            <a href="/listing/icon/Beach/city/<%=datas[0].location%>">Beach</a>
         </div>
         <div class="switch">
             <div class="form-check form-switch form-check-reverse">
@@ -123,10 +123,6 @@
                 <label class="form-check-label" for="switchCheckDefault">Show GST</label>
             </div>
         </div>
-         <form method="get" action="/city/<%=datas[0].feature%>">
-             <input style="border-radius: 20px; padding: 7px;" name="city" type="text" placeholder="Enter a City">
-             <button type="submit" class="btn btn-primary">Search</button>
-        </form>
     </div>
 
     <!-- Listings -->
