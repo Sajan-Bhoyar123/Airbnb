@@ -123,9 +123,9 @@
                 <label class="form-check-label" for="switchCheckDefault">Show GST</label>
             </div>
         </div>
-         <form method="get" action="/city">
-            <input style="border-radius: 20px; padding: 7px;" name="city" type="text" placeholder="Enter a City">
-            <button type="submit" class="btn btn-primary">Search</button>
+         <form method="get" action="/city/<%=datas[0].feature%>">
+             <input style="border-radius: 20px; padding: 7px;" name="city" type="text" placeholder="Enter a City">
+             <button type="submit" class="btn btn-primary">Search</button>
         </form>
     </div>
 
