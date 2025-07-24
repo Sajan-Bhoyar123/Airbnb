@@ -165,7 +165,7 @@ app.get("/listing/icon/:iconname/city/:cityname",wrapasync(async(req,res)=>{
       console.log(datas);
       if(datas.length<1){
          req.flash("error",`NOT any Property in ${cityname} belong to that ${iconname} icon`);
-         res.redirect(`http://localhost:3000/city?city=${cityname}`);
+         res.redirect(`/city?city=${cityname}`);
       }else{
          res.render("listing/indexx.ejs",{datas});
       }
