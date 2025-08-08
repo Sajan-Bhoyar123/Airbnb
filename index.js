@@ -97,12 +97,13 @@ app.use((req,res,next)=>{
 
 
 app.get("/",(req,res)=>{
-   req.flash("error","this page Not Found");   
+   req.flash("success","Welcome To Airbnb"); 
    res.redirect("./listing")
 })
+
 app.get("/listing/search",async(req,res)=>{
     let {Title} = req.query;
-    const datas = await Listing.find({title:Title});
+   const datas = await Listing.find({title:{$regex:new RegExp(Title,"i")}})
     if(datas.length<1){
       req.flash("error","Property NOT Found");
       res.redirect("/listing")
@@ -148,7 +149,7 @@ res.render("listing/terms.ejs")
 app.get("/city",wrapasync(async(req,res)=>{
     let {city} = req.query;
     console.log("city = ",city);
-    const datas =await Listing.find({location:city});
+   const datas =await Listing.find({location: { $regex: new RegExp(city, 'i') } });
     if(datas.length<1){
          req.flash("error",`NOT any Property belong to that ${city} City`);
          res.redirect("/listing");
