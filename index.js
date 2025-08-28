@@ -12,6 +12,7 @@ const passport = require("passport");
 const Localstratergy = require("passport-local");
 const user = require("./models/user.js");
 const Booking = require("./models/booking.js");
+const axios = require("axios");
 
 const DBURL = process.env.ATLASDB_URL;
 console.log("Connecting to MongoDB Atlas:", DBURL);
@@ -48,6 +49,9 @@ const wrapasync = require("./util/wrapasync.js");
 const ExpressError = require("./util/express.js");
 const {listingschema} = require("./schema.js");
 const review = require("./models/review.js");
+const API_URL = "https://api.together.xyz/v1/chat/completions"; 
+const API_KEY = process.env.TOGETHER_API_KEY;
+app.use(express.json());
 app.set("view engine","ejs");
 app.use(express.static("public"));
 app.use(express.urlencoded({extended:true}))
@@ -172,6 +176,40 @@ app.get("/listing/icon/:iconname/city/:cityname",wrapasync(async(req,res)=>{
       }
       
 }))
+app.get("/chat",(req,res)=>{
+   res.render("listing/chat.ejs")
+})
+app.post("/chat", async (req, res) => {
+    try {
+        const { message } = req.body;
+        console.log("messege = ",message);
+
+        const response = await axios.post(
+            "https://api.together.xyz/v1/chat/completions",
+            {
+                model: "mistralai/Mistral-7B-Instruct-v0.1", // Ensure correct model name
+                messages: [{ role: "user", content: message }],
+                temperature: 0.7
+            },
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${API_KEY}`
+                }
+            }
+        );
+
+        // Extract the correct response format
+        const botResponse = response.data.choices?.[0]?.message?.content || "Sorry, I couldn't understand that.";
+        
+        // Send in correct JSON format
+        res.json({ choices: [{ message: { content: botResponse } }] });
+    } catch (error) {
+        console.error("Error:", error.response ? error.response.data : error.message);
+        res.status(500).json({ error: "Failed to fetch AI response" });
+    }
+});
+
 app.use((err,req,res,next)=>{
   console.log(err);
     let {status = 404,message} = err;
